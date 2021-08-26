@@ -1,0 +1,73 @@
+version: "3.3"
+
+services:
+  
+  app:
+    # image: node:14.17-alpine
+    build:
+      context: ./app
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - 4000:4000
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+    restart: always
+    networks:
+      - main
+
+  # api:
+  #   image: node:14.17-alpine
+  #   build:
+  #     context: ./api
+  #   ports:
+  #     - 8000:8000
+  #   volumes:
+  #     - ./api:/api
+  #   restart: always
+  #   environment:
+  #     NODE_ENV: development
+  #   working_dir: /api
+  #   command: sh -c "cd /api; npm run dev"
+  #   networks:
+  #     - main
+  #   depends_on:
+  #     - db      
+  
+  # db:
+  #   container_name: db
+  #   hostname: db
+  #   image: postgres:13.3-alpine
+  #   ports:
+  #     - 5432:5432
+  #   volumes:
+  #     # - ./postgres-initdb.sh:/docker-entrypoint-initdb.d/init.sh
+  #     - db-data:/var/lib/postgresql/data/
+  #   restart: always
+  #   env_file:
+  #     - .env.dev
+  #   networks:
+  #     - main
+
+  # pgadmin:
+  #   container_name: pgadmin
+  #   hostname: pgadmin
+  #   image: dpage/pgadmin4:latest
+  #   restart: always
+  #   env_file:
+  #     - .env.dev
+  #   ports:
+  #     - 8080:80
+  #   volumes:
+  #     - pgadmin-data:/var/lib/pgadmin
+  #   networks:
+  #     - main
+  #   depends_on:
+  #     - db
+
+# volumes:
+#   pgadmin-data:
+#   db-data:      
+networks:
+  main:
+    driver: bridge   

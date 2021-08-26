@@ -1,0 +1,91 @@
+{
+  "extends": [
+    "airbnb-typescript"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.eslint.json"
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "react-hooks"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true
+  },
+  "rules": {
+    "no-tabs": 2,
+    "max-len": [
+      "error", 
+      {
+        "code": 150,
+        "tabWidth": 2
+      }
+    ],
+    "no-param-reassign": "off",
+    "react/jsx-props-no-spreading": "off",
+    "import/no-cycle": "off",
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "ExportDefaultDeclaration",
+        "message": "Prefer named exports"
+      }
+    ],
+    "import/prefer-default-export": 0,
+    "@typescript-eslint/semi": 0,
+    "semi": ["error", "never"],
+    "react-hooks/rules-of-hooks": "error",
+    "@typescript-eslint/indent": [
+      "error",
+      2
+    ],
+    "react/jsx-indent": [
+      "error",
+      2
+    ],
+    "react/jsx-tag-spacing": [
+      "error",
+      {
+        "beforeSelfClosing": "never"
+      }
+    ],
+    "react/jsx-indent-props": [
+      "error",
+      2
+    ],
+    "react/jsx-closing-bracket-location": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/prop-types": [0],
+    "block-spacing" : [
+      "error",
+      "never"
+    ],
+    "import/no-extraneous-dependencies": [
+      "error", 
+      {
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-single"
+    ],
+    "no-plusplus": "off",
+    "no-underscore-dangle": "off",
+    "arrow-parens": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/comma-dangle": [
+      "error",
+      "never"
+    ]
+  }
+}

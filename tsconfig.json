@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "es2017",
+      "webworker"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es5",
+    "jsx": "react",
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "declaration": false,
+    "sourceMap": true,
+    "baseUrl": "./",
+    "outDir": "./dist",
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "typeRoots": [
+      "typings/**/*.d.ts",
+      "node_modules/@types"
+    ],
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@store/*": ["src/store/*"],
+      "@saga/*": ["src/saga/*"],
+      "@xhr": ["src/xhr/index"],
+      "@apiYa/*": ["src/services/api/ya/*"],
+      "@apiDb/*": ["src/services/api/db/*"],
+      "@validation/*": ["src/services/validation/*"],
+      "@games/*": ["src/games/*"],
+      "@HOCs": ["src/HOCs/index"]
+    }       
+  },
+  "include": [
+    "src/**/*.ts",
+    "typings/**/*.d.ts",
+    "./node_modules/@types",
+    "tests/**/*.test.js",
+    "tests/**/*.test.ts",
+    "spa/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]  
+}
