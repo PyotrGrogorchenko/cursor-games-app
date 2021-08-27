@@ -3,71 +3,56 @@ version: "3.3"
 services:
   
   app:
-    # image: node:14.17-alpine
+    container_name: app_app
     build:
-      context: ./app
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile.dev
     ports:
-      - 3000:3000
+      - 4000:4000
     restart: always
-    # environment:
-    #   NODE_ENV: production
-    #   HOST: 0.0.0.0
-    # # working_dir: /app
-    # command: sh -c "cd /app; npm run prod"
+    environment:
+      NODE_ENV: development
+      HOST: 0.0.0.0
+    volumes:
+      - .:/app
+      - /node_modules
+    working_dir: /app
+    networks:
+      - main
+    depends_on:
+      - api
+
+  api:
+    container_name: app_api
+    build:
+      context: https://github.com/PyotrGrogorchenko/cursor-games-api.git#main:.
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - 8000:8000
+    restart: always
+    networks:
+      - main
+    depends_on:
+      - db      
+  
+  db:
+    container_name: app_db
+    hostname: app_db
+    image: postgres:13.3-alpine
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: qwerty
+      POSTGRES_DB: games
+    ports:
+      - 5432:5432
+    volumes:
+     - db-data:/var/lib/postgresql/data/
+    restart: always
     networks:
       - main
 
-  # api:
-  #   image: node:14.17-alpine
-  #   build:
-  #     context: ./api
-  #   ports:
-  #     - 8000:8000
-  #   restart: always
-  #   environment:
-  #     NODE_ENV: production
-  #   working_dir: /api
-  #   command: sh -c "cd /api; npm run prod"
-  #   networks:
-  #     - main
-  #   depends_on:
-  #     - db
-  
-  # db:
-  #   container_name: db
-  #   hostname: db
-  #   image: postgres:13.3-alpine
-  #   ports:
-  #     - 5432:5432
-  #   volumes:
-  #     # - ./postgres-initdb.sh:/docker-entrypoint-initdb.d/init.sh
-  #     - db-data:/var/lib/postgresql/data/
-  #   restart: always
-  #   env_file:
-  #     - .env
-  #   networks:
-  #     - main
-
-  # pgadmin:
-  #   container_name: pgadmin
-  #   hostname: pgadmin
-  #   image: dpage/pgadmin4:latest
-  #   restart: always
-  #   env_file:
-  #     - .env
-  #   ports:
-  #     - 8080:80
-  #   volumes:
-  #     - pgadmin-data:/var/lib/pgadmin
-  #   networks:
-  #     - main
-  #   depends_on:
-  #     - db
-
-# volumes:
-#   pgadmin-data:
-#   db-data:      
+volumes:
+  db-data:      
 networks:
   main:
     driver: bridge   

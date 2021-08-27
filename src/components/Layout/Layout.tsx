@@ -60,7 +60,7 @@ const Layout: FC<Props> = (props: Props) => {
               </IconButton>
             </Grid>
             <Grid item sm={3}>
-              <IconButton color='inherit' href='https://github.com/PyotrGrogorchenko/cursor-games' target='_blank'>
+              <IconButton color='inherit' href='https://github.com/PyotrGrogorchenko/cursor-games-app' target='_blank'>
                 <GitHubIcon/>
               </IconButton>
             </Grid>

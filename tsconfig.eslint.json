@@ -9,6 +9,7 @@
     "src/**/*.js",
     "typings/**/*.d.ts",
     "src/**/*.test.js",
-    "src/**/*.test.ts"
+    "src/**/*.test.ts",
+    "jest.setup.js"
   ]
 }
