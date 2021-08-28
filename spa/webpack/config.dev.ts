@@ -1,4 +1,4 @@
-import webpack, { Configuration } from 'webpack'
+import webpack, { Configuration, DefinePlugin } from 'webpack'
 import { merge } from 'webpack-merge'
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import { DIST_DIR } from './env'
@@ -36,7 +36,10 @@ const config: Configuration = merge(configCommon, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new ReactRefreshWebpackPlugin()
+    new ReactRefreshWebpackPlugin(),
+    new DefinePlugin({
+      IS_DEV: JSON.stringify(true)
+    })
   ]
 })
 

@@ -3,7 +3,7 @@ import path from 'path'
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { DIST_DIR, SRC_DIR, IS_DEV } from './env'
+import { DIST_DIR, SRC_DIR } from './env'
 
 export const config: Configuration = {
   context: path.resolve(SRC_DIR),
@@ -64,7 +64,6 @@ export const config: Configuration = {
     }),
     new CleanWebpackPlugin(),
     new DefinePlugin({
-      IS_DEV: JSON.stringify(IS_DEV),
       IS_CLIENT: JSON.stringify(true),
       IS_SSR: JSON.stringify(false)
     })
