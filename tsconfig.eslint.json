@@ -10,6 +10,7 @@
     "typings/**/*.d.ts",
     "src/**/*.test.js",
     "src/**/*.test.ts",
+    "env/**/*.ts",
     "jest.setup.js"
   ]
 }

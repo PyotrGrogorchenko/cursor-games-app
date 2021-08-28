@@ -1,4 +1,4 @@
-import { ResBase } from '../../types'
+import { ResBase } from '../../ya/types'
 
 export type Methods = 'postScore' | 'getScore'
 

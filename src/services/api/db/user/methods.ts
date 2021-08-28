@@ -11,9 +11,7 @@ export const getTransport = (userId: Number) => {
   return transport
 }
 
-const postUser = async (data: DataLogin): Promise<ResLogin> => {
-  return getTransport(data.userId).post(url.user, data)
-}
+const postUser = async (data: DataLogin): Promise<ResLogin> => getTransport(data.userId).post(url.user, data)
 
 export const exe = async (method: Methods, data?: Data):Promise<Res> => {
   try {

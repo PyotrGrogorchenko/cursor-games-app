@@ -1,4 +1,4 @@
-import { ResBase } from '../../types'
+import { ResBase } from '../types'
 
 export type Methods = 'putAvatar' | 'putProfile' | 'putPassword'
 

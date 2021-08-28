@@ -1,4 +1,4 @@
-import { ResBase } from '../../types'
+import { ResBase } from '../types'
 import { UserData } from '../user/types'
 
 export type Methods = 'postSignup' | 'postSignin' | 'postLogout' | 'getUser'

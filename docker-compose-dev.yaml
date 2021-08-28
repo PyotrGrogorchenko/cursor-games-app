@@ -2,11 +2,11 @@ version: "3.3"
 
 services:
   
-  app:
-    container_name: app_app
+  web:
+    container_name: app-web
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile-dev
     ports:
       - 4000:4000
     restart: always
@@ -23,10 +23,10 @@ services:
       - api
 
   api:
-    container_name: app_api
+    container_name: app-api
     build:
       context: https://github.com/PyotrGrogorchenko/cursor-games-api.git#main:.
-      dockerfile: ./Dockerfile.dev
+      dockerfile: ./Dockerfile-dev
     ports:
       - 8000:8000
     restart: always
@@ -36,8 +36,7 @@ services:
       - db      
   
   db:
-    container_name: app_db
-    hostname: app_db
+    container_name: app-db
     image: postgres:13.3-alpine
     environment:
       POSTGRES_USER: admin

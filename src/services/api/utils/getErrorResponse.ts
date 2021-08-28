@@ -1,4 +1,4 @@
-import { ResBase } from '../types'
+import { ResBase } from '../ya/types'
 
 export const getErrorResponse = (
   error: string & Error, status: number = 404, reason: string = 'Something went wrong'

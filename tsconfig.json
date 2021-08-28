@@ -40,6 +40,7 @@
       "@apiDb/*": ["src/services/api/db/*"],
       "@validation/*": ["src/services/validation/*"],
       "@games/*": ["src/games/*"],
+      "@env/*": ["env/*"],
       "@HOCs": ["src/HOCs/index"]
     }       
   },
@@ -49,7 +50,8 @@
     "./node_modules/@types",
     "tests/**/*.test.js",
     "tests/**/*.test.ts",
-    "spa/**/*.ts"
+    "spa/**/*.ts",
+    "spa/webpack/env.ts"
   ],
   "exclude": [
     "node_modules"

@@ -1,4 +1,6 @@
-export const urlRoot = `${document.location.protocol}//${document.location.hostname}:8000/api`
+export const urlRoot = IS_DEV ? `${document.location.protocol}//${document.location.hostname}:8000/api`
+  : process.env.API_URL
+console.log('urlRoot', urlRoot)
 
 export const url = {
   score: `${urlRoot}/score`,

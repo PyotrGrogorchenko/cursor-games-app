@@ -1,4 +1,4 @@
-import { urlRoot } from '../../const'
+import { urlRoot } from '../const'
 
 const urlAuth = `${urlRoot}/auth`
 

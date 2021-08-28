@@ -6,6 +6,7 @@ import { Keys } from '@games/aux/types'
 import { userDataSelector } from '@store/selectors'
 import { getScore, saveScore } from '@apiDb/score/actions'
 import { useSnackbar } from 'notistack'
+import { login } from '@apiDb/user/actions'
 import { Props } from './types'
 import { View } from '../View'
 import {
@@ -29,11 +30,22 @@ const Controller: FC<Props> = () => {
   useEffect(() => {
     window.addEventListener('keydown', onKeyDown)
     observer.subscribe(onModel)
-    getScore(Number(userData?.id), modelData)
-      .then(res => {
-        if (!res.ok) enqueueSnackbar('Failed to get score', { variant: 'error' })
-        updateScoreBest(res.score)
+    if (userData) {
+      login({
+        userId: userData.id,
+        avatar: userData.avatar,
+        displayName: userData.display_name || userData.login
+      }).then(resLogin => {
+        if (!resLogin.ok) enqueueSnackbar('Authorization failed', { variant: 'error' })
+        else {
+          getScore(Number(userData?.id), modelData)
+            .then(resScore => {
+              if (!resScore.ok) enqueueSnackbar('Failed to get score', { variant: 'error' })
+              updateScoreBest(resScore.score)
+            })
+        }
       })
+    }
 
     return () => {
       window.removeEventListener('keydown', onKeyDown)
