@@ -3,5 +3,5 @@ export const urlRoot = IS_DEV ? `${document.location.protocol}//${document.locat
 
 export const url = {
   score: `${urlRoot}/score`,
-  user: `${urlRoot}/users`
+  user: `${urlRoot}/user`
 }
