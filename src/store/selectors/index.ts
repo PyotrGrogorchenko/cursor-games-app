@@ -1,5 +1,4 @@
-import { Methods } from 'src/services/api/types'
-import { User } from '@apiYa/user/types'
+import { Methods, User } from '@apiYa/user/types'
 import { ConditionPhases } from '@store/reducers/main/state'
 import { TypedUseSelectorHook, useSelector } from 'react-redux'
 import { RootState } from '../reducers'
@@ -30,9 +29,9 @@ export const conditionPhaseSelector = (phase: ConditionPhases, method?: Methods)
   return condition.method === method && condition.phase === phase
 }
 
-export const conditionSuccessSelector = (method?: Methods) => conditionPhaseSelector('SUCCESS', method)
-export const conditionRequestSelector = (method?: Methods) => conditionPhaseSelector('REQUEST', method)
-export const conditionErrorSelector = (method?: Methods) => conditionPhaseSelector('ERROR', method)
+export const conditionSuccessSelector = (method?: any) => conditionPhaseSelector('SUCCESS', method)
+export const conditionRequestSelector = (method?: any) => conditionPhaseSelector('REQUEST', method)
+export const conditionErrorSelector = (method?: any) => conditionPhaseSelector('ERROR', method)
 
 // err
 export const errSelector = () => typedState(s => s).err

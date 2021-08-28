@@ -1,10 +1,8 @@
-import { Methods } from 'src/services/api/types'
-
 export type ConditionPhases = 'REQUEST' | 'SUCCESS' | 'ERROR'
 
 export type Condition = {
   phase?: ConditionPhases
-  method?: Methods
+  method?: any
 }
 
 export type State = {
