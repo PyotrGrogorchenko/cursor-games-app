@@ -6,7 +6,6 @@ import { Keys } from '@games/common/types'
 import { userDataSelector } from '@store/selectors'
 import { getScore, saveScore } from '@apiDb/score/actions'
 import { useSnackbar } from 'notistack'
-import { login } from '@apiDb/user/actions'
 import { getObserver, resetObserver } from '@games/common/utils/observer'
 import { Props } from './types'
 import { View as ViewSnake } from '../../gameSnake/View'
@@ -35,20 +34,11 @@ const Controller: FC<Props> = (props: Props) => {
     window.addEventListener('keydown', onKeyDown)
     getObserver().subscribe(onModel)
     if (userData) {
-      login({
-        userId: userData.id,
-        avatar: userData.avatar,
-        displayName: userData.display_name || userData.login
-      }).then(resLogin => {
-        if (!resLogin.ok) enqueueSnackbar('Authorization failed', { variant: 'error' })
-        else {
-          getScore(Number(userData?.id), modelData)
-            .then(resScore => {
-              if (!resScore.ok) enqueueSnackbar('Failed to get score', { variant: 'error' })
-              updateScoreBest(resScore.score)
-            })
-        }
-      })
+      getScore(Number(userData?.id), modelData)
+        .then(resScore => {
+          if (!resScore.ok) enqueueSnackbar('Failed to get score', { variant: 'error' })
+          updateScoreBest(resScore.score)
+        })
     }
 
     return () => {

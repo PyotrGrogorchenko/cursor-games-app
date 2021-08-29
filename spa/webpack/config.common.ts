@@ -3,6 +3,7 @@ import path from 'path'
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import CopyPlugin from 'copy-webpack-plugin'
 import { DIST_DIR, SRC_DIR } from './env'
 
 export const config: Configuration = {
@@ -58,6 +59,14 @@ export const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '../static/index.html')
+    }),
+    new CopyPlugin({
+      patterns:
+      [
+        {
+          from: path.join(__dirname, '../../static'), to: 'static'
+        }
+      ]
     }),
     new ProvidePlugin({
       process: 'process/browser'
