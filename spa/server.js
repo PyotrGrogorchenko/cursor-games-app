@@ -5,7 +5,7 @@ const favicon = require('serve-favicon')
 const app = express()
 
 app.use(express.static(path.join(__dirname, '../dist')))
-app.use(favicon(path.join(__dirname, '../dist/static/main_logo_7vj_icon.ico')))
+app.use(favicon(path.join(__dirname, '../dist/static/main_logo.ico')))
 
 app.use('/', express.static(path.join(__dirname, '../dist/index.html')))
 app.get('*', (req, res) => {
