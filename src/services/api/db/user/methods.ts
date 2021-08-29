@@ -4,6 +4,8 @@ import {
 } from './types'
 import { url } from '../const'
 import { getErrorResponse } from '../../utils'
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 
 export const getTransport = (userId: Number) => {
   const transport = getTransportMain(false)

@@ -1,4 +1,4 @@
-import { screenEnd, screenBegin, screenGameOver } from '@games/aux/canvas/screen'
+import { screenEnd, screenBegin, screenGameOver } from '@games/common/canvas/screen'
 import { Data } from '@games/gameSnake/model/types'
 import { cloneDeep } from 'lodash'
 import { edge, header } from '../../const'

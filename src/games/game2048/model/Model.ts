@@ -1,7 +1,7 @@
-import { Conditions, Keys } from '@games/aux/types'
+import { Conditions, Keys } from '@games/common/types'
 import {
   decrypt, encrypt, findRandomFreeCell, getRandomInt
-} from '@games/aux/utils/math'
+} from '@games/common/utils/math'
 import { cloneDeep } from 'lodash'
 import { initialModel, Data } from './types'
 

@@ -3,7 +3,7 @@ import React, {
 } from 'react'
 import { Box, withStyles } from '@material-ui/core'
 import { cloneDeep } from 'lodash'
-import { isGame } from '@games/aux/utils/conditions'
+import { isGame } from '@games/common/utils/conditions'
 import { styles } from './styles'
 import { initialState, Props } from './types'
 import { edge, header } from '../const'
@@ -17,7 +17,7 @@ const View: FC<Props> = (props: Props) => {
   const [state, setState] = useState(cloneDeep(initialState))
   const { classes, model } = props
   const {
-    height, width, condition, score, items
+    height, width, condition, score, items, scoreBest
   } = model
   const ctxWidth = useMemo(() => edge * width, [])
   const ctxHeight = useMemo(() => edge * height + header, [])
@@ -35,7 +35,7 @@ const View: FC<Props> = (props: Props) => {
 
   useEffect(() => {
     drawHeader(ctx, model)
-  }, [score, condition])
+  }, [score, scoreBest, condition])
 
   useEffect(() => {
     if (!isGame(model)) return

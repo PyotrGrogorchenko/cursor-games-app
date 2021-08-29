@@ -10,8 +10,15 @@ const obs = {
   notify: () => obs.observers.forEach(o => o())
 }
 
-export const getObserver = () => {
-  const newObs = cloneDeep(obs)
-  newObs.observers = []
-  return newObs
+export const getObserver = (reset?: boolean) => {
+  if (reset) {
+    const newObs = cloneDeep(obs)
+    newObs.observers = []
+    return newObs
+  }
+  return obs
+}
+
+export const resetObserver = () => {
+  obs.observers = []
 }

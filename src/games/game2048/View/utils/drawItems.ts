@@ -1,4 +1,4 @@
-import { decrypt } from '@games/aux/utils/math'
+import { decrypt } from '@games/common/utils/math'
 import { Data } from '@games/game2048/model/types'
 import { drawCell } from './drawCell'
 

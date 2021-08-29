@@ -1,4 +1,4 @@
-import { screenHeader } from '@games/aux/canvas/screen'
+import { screenHeader } from '@games/common/canvas/screen'
 import { Data } from '@games/gameSnake/model/types'
 import { edge, header } from '../../const'
 

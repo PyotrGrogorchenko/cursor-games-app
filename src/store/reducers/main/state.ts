@@ -7,7 +7,7 @@ export type Condition = {
 
 export type State = {
   condition?: Condition
-  title?: string
+  loader?: boolean
 }
 
 export const initialState: State = {}

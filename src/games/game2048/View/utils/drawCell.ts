@@ -1,6 +1,6 @@
-import { fillText } from '@games/aux/canvas/fillText'
-import { rectRound } from '@games/aux/canvas/rectRound'
-import { getColor } from '@games/aux/theme'
+import { fillText } from '@games/common/canvas/fillText'
+import { rectRound } from '@games/common/canvas/rectRound'
+import { getColor } from '@games/common/theme'
 import {
   colors, edge, header, valueColors
 } from '../../const'

@@ -1,5 +1,5 @@
-import { rectRound } from '@games/aux/canvas/rectRound'
-import { decrypt } from '@games/aux/utils/math'
+import { rectRound } from '@games/common/canvas/rectRound'
+import { decrypt } from '@games/common/utils/math'
 import { Data } from '@games/gameSnake/model/types'
 import { colors, edge, header } from '../../const'
 import { drawCell } from './drawCell'

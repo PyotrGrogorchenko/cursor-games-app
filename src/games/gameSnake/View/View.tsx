@@ -2,7 +2,7 @@ import React, {
   FC, useEffect, useMemo, useRef, useState
 } from 'react'
 import { Box, withStyles } from '@material-ui/core'
-import { isGame } from '@games/aux/utils/conditions'
+import { isGame } from '@games/common/utils/conditions'
 import { cloneDeep } from 'lodash'
 import { styles } from './styles'
 import { initialState, Props } from './types'

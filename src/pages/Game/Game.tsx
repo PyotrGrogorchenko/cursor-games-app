@@ -1,13 +1,18 @@
-import React, { FC, useEffect, useMemo } from 'react'
-import { withStyles, Typography } from '@material-ui/core'
+import React, {
+  FC, useEffect, useMemo, useState
+} from 'react'
+import { withStyles } from '@material-ui/core'
 import { useMainContext } from '@components/providers/MainProvider'
 import { useParams, withRouter } from 'react-router-dom'
-import { Controller as ControllerSnake } from '@games/gameSnake/Controller'
-import { Controller as Controller2048 } from '@games/game2048/Controller'
-import { getGameCard } from '@games/data/gamesList'
-// import { login } from '@apiDb/user/actions'
-// import { userDataSelector } from '@store/selectors'
-// import { useSnackbar } from 'notistack'
+import { getGameCard } from '@games/common/data/gamesList'
+import { login } from '@apiDb/user/actions'
+import { userDataSelector } from '@store/selectors'
+import { useSnackbar } from 'notistack'
+import { useDispatch } from 'react-redux'
+import { loader } from '@store/reducers/main/actions'
+import { Controller } from '@games/common/Controller'
+import { modelMethods as modelMethodsSnake } from '@games/gameSnake/model'
+import { modelMethods as modelMethods2048 } from '@games/game2048/model'
 import { styles } from './styles'
 import { Props } from './types'
 
@@ -15,34 +20,39 @@ const Game: FC<Props> = (props: Props) => {
   const { classes } = props
   const { setTitle } = useMainContext()
   const { id } = useParams<{ id: string }>()
-  // const userData = userDataSelector()
-  // const { enqueueSnackbar } = useSnackbar()
+  const [apiConnected, setApiConnected] = useState(false)
+  const userData = userDataSelector()
+  const { enqueueSnackbar } = useSnackbar()
+  const dispatch = useDispatch()
 
   const gameCard = useMemo(() => getGameCard(id), [id])
 
   useEffect(() => {
     setTitle(`${gameCard.title}`)
-    // if (!userData) return
-    // login({
-    //   userId: userData.id,
-    //   avatar: userData.avatar,
-    //   displayName: userData.display_name || userData.login
-    // }).then(res => {
-    //   if (!res.ok) enqueueSnackbar('Authorization failed', { variant: 'error' })
-    // })
+    if (!userData) return
+    dispatch(loader(true))
+    login({
+      userId: userData.id,
+      avatar: userData.avatar,
+      displayName: userData.display_name || userData.login
+    }).then(res => {
+      if (res.ok) setApiConnected(true)
+      else enqueueSnackbar('Authorization failed', { variant: 'error' })
+    })
+    dispatch(loader(false))
   }, [])
 
-  const renderGame = () => {
+  const getModelMethods = () => {
     switch (gameCard.name) {
-      case 'snake': return <ControllerSnake/>
-      case '2048': return <Controller2048/>
-      default: return <Typography variant='h3'>{`${gameCard.title}`}</Typography>
+      case 'snake': return modelMethodsSnake
+      case '2048': return modelMethods2048
+      default: throw new Error(`Unexpected gameId: ${gameCard.name}`)
     }
   }
 
   return (
     <div className={classes.root}>
-      {renderGame()}
+      {apiConnected && <Controller modelMethods={getModelMethods()}/>}
     </div>
   )
 }

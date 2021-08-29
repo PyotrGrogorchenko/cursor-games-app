@@ -1,4 +1,4 @@
-import { getColor } from '@games/aux/theme'
+import { getColor } from '@games/common/theme'
 import { createStyles } from '@material-ui/core'
 
 export const styles = () => createStyles({

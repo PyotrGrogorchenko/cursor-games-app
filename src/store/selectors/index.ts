@@ -19,7 +19,7 @@ export const userDataPropSelector = (prop: keyof User) => {
 
 // main
 export const mainSelector = () => typedState(s => s).main
-export const titleSelector = () => mainSelector().condition
+export const loaderSelector = () => mainSelector().loader
 
 export const conditionSelector = () => mainSelector().condition
 export const conditionPhaseSelector = (phase: ConditionPhases, method?: Methods) => {

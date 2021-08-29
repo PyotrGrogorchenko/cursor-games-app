@@ -6,8 +6,8 @@ import {
 } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 import { useMainContext } from '@components/providers/MainProvider'
-import { getGamesList } from '@games/data/gamesList'
-import { GameCard } from '@games/data/types'
+import { getGamesList } from '@games/common/data/gamesList'
+import { GameCard } from '@games/common/data/types'
 import { styles } from './styles'
 import { Props } from './types'
 
@@ -36,7 +36,7 @@ const Home: FC<Props> = (props: Props) => {
                     <CardMedia
                       className={classes.cardMedia}
                       image='https://source.unsplash.com/random'
-                      title='Contemplative Reptile'
+                      title={card.name}
                     />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant='h6'>

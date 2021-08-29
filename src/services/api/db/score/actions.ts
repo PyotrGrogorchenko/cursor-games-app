@@ -9,7 +9,7 @@ export const saveScore = async (userId: number, data: { gameId: string, score: n
     score: data.score,
     gameId: data.gameId
   })
-  return { ok: res.status === 201 }
+  return { ok: res.status === 201 || res.status === 200 }
 }
 
 export const getScore = async (userId: number, data: { gameId: string }): Promise<{ score: number } & DbResponse> => {

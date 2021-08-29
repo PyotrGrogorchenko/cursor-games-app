@@ -1,4 +1,4 @@
-import { BaseData } from '@games/aux/types'
+import { BaseData } from '@games/common/types'
 import { getColor } from '../theme'
 import { fillRect } from './fillRect'
 import { fillText } from './fillText'

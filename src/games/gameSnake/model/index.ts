@@ -1,27 +1,24 @@
-import { Keys } from '@games/aux/types'
-import { getObserver } from '@games/aux/utils/observer'
+import { Keys } from '@games/common/types'
+import { getObserver } from '@games/common/utils/observer'
 import {
   clearPause, clearTick, setPause, setTick
-} from '@games/aux/utils/timer'
+} from '@games/common/utils/timer'
 import { Model } from './Model'
 
 const model = new Model()
-const observer = getObserver()
 
 export const getModelData = () => model.data
 export const updateScoreBest = (scoreBest: number) => {
   model.data.scoreBest = scoreBest
   model.updateData()
-  observer.notify()
+  getObserver().notify()
 }
-
-export { observer }
 
 const stopGame = () => {
   clearTick()
   model.setCondition('end')
   model.updateData()
-  observer.notify()
+  getObserver().notify()
   model.actionAllow = true
 }
 
@@ -37,14 +34,14 @@ const tick = () => {
   if (model.isSnakeDied(coord)) {
     gameOver()
     model.updateData()
-    observer.notify()
+    getObserver().notify()
     return
   }
   model.move(coord)
   if (!model.data.gift) setTick(tick, model.data.tickInterval)
   model.gift()
   model.updateData()
-  observer.notify()
+  getObserver().notify()
 }
 
 export const clear = () => {
@@ -75,4 +72,8 @@ export const onController = (key: Keys) => {
     default:
       throw new Error('Condition is incorrect')
   }
+}
+
+export const modelMethods = {
+  getModelData, onController, clear, updateScoreBest
 }

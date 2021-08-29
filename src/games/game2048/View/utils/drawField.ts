@@ -1,5 +1,5 @@
-import { fillRect } from '@games/aux/canvas/fillRect'
-import { getColor } from '@games/aux/theme'
+import { fillRect } from '@games/common/canvas/fillRect'
+import { getColor } from '@games/common/theme'
 import { edge, header } from '@games/game2048/const'
 import { Data } from '@games/game2048/model/types'
 import { drawCell } from './drawCell'

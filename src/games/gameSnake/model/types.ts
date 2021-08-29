@@ -1,5 +1,5 @@
-import { BaseData } from '@games/aux/types'
-import { encrypt } from '@games/aux/utils/math'
+import { BaseData } from '@games/common/types'
+import { encrypt } from '@games/common/utils/math'
 
 export type Data = {
   tickInterval: number

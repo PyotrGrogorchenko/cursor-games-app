@@ -9,6 +9,7 @@ import { RoutesList } from '@components/routers/MainRouter'
 import { LinearLoader } from '@components/loaders/LinearLoader'
 import { userAuthSelector, userDataPropSelector } from '@store/selectors'
 import MenuIcon from '@material-ui/icons/Menu'
+import HomeIcon from '@material-ui/icons/Home'
 import { AvatarUI } from '@components/UI/AvatarUI/index'
 import { useMainContext } from '@components/providers/MainProvider'
 import GitHubIcon from '@material-ui/icons/GitHub'
@@ -60,6 +61,9 @@ const Layout: FC<Props> = (props: Props) => {
               </IconButton>
             </Grid>
             <Grid item sm={3}>
+              <IconButton color='inherit' href='/'>
+                <HomeIcon/>
+              </IconButton>
               <IconButton color='inherit' href='https://github.com/PyotrGrogorchenko/cursor-games-app' target='_blank'>
                 <GitHubIcon/>
               </IconButton>

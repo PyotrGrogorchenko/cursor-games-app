@@ -1,4 +1,4 @@
-import { fillRect } from '@games/aux/canvas/fillRect'
+import { fillRect } from '@games/common/canvas/fillRect'
 import { colors, edge, header } from '../../const'
 
 export const drawCell = (ctx: Ctx, i: number, j: number) => {

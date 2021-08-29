@@ -2,20 +2,24 @@ import React, {
   FC, useEffect, useState,
   useCallback
 } from 'react'
-import { Keys } from '@games/aux/types'
+import { Keys } from '@games/common/types'
 import { userDataSelector } from '@store/selectors'
 import { getScore, saveScore } from '@apiDb/score/actions'
 import { useSnackbar } from 'notistack'
 import { login } from '@apiDb/user/actions'
+import { getObserver, resetObserver } from '@games/common/utils/observer'
 import { Props } from './types'
-import { View } from '../View'
-import {
-  getModelData, onController, clear, observer, updateScoreBest
-} from '../model'
+import { View as ViewSnake } from '../../gameSnake/View'
+import { View as View2048 } from '../../game2048/View'
 
-const Controller: FC<Props> = () => {
+const Controller: FC<Props> = (props: Props) => {
+  const { modelMethods } = props
+  const {
+    getModelData, onController, clear, updateScoreBest
+  } = modelMethods
+
   const [modelData, setModelData] = useState(getModelData())
-  const { condition } = modelData
+  const { condition, gameId } = modelData
   const userData = userDataSelector()
   const { enqueueSnackbar } = useSnackbar()
 
@@ -29,7 +33,7 @@ const Controller: FC<Props> = () => {
 
   useEffect(() => {
     window.addEventListener('keydown', onKeyDown)
-    observer.subscribe(onModel)
+    getObserver().subscribe(onModel)
     if (userData) {
       login({
         userId: userData.id,
@@ -49,7 +53,7 @@ const Controller: FC<Props> = () => {
 
     return () => {
       window.removeEventListener('keydown', onKeyDown)
-      observer.unsubscribe(onModel)
+      resetObserver()
       clear()
     }
   }, [])
@@ -62,7 +66,12 @@ const Controller: FC<Props> = () => {
       })
   }, [condition])
 
-  return <View model={modelData}/>
+  return (
+    <>
+      {gameId === 'snake' && <ViewSnake model={modelData}/>}
+      {gameId === '2048' && <View2048 model={modelData}/>}
+    </>
+  )
 }
 
 export const ControllerTSX = Controller

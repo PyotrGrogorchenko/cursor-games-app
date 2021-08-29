@@ -1,21 +1,32 @@
-import { Methods } from 'src/services/api/types'
 import { Action } from 'redux'
 import { Condition, ConditionPhases } from './state'
 
 export enum Actions {
-  CONDITION = 'main/CONDITION'
+  CONDITION = 'main/CONDITION',
+  LOADER = 'main/LOADER'
 }
 
 // CONDITION
 export type ActionCondition = {
   payload?: Condition
 } & Action
-export const condition = (phase?: ConditionPhases, method?: Methods): ActionCondition => (
+export const condition = (phase?: ConditionPhases, method?: any): ActionCondition => (
   {
     type: Actions.CONDITION,
     payload: { phase, method }
   }
 )
 
+// CONDITION
+export type ActionLoader = {
+  payload?: boolean
+} & Action
+export const loader = (payload?: boolean): ActionLoader => (
+  {
+    type: Actions.LOADER,
+    payload
+  }
+)
+
 // COMMON
-export type ActionCommon = ActionCondition
+export type ActionCommon = ActionCondition | ActionLoader
