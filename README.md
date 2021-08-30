@@ -8,7 +8,7 @@
 
 > node 14.x
 
-### development
+### Development
 
 ```bash
 npm install

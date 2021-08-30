@@ -1,5 +1,5 @@
 import React, {
-  FC, useEffect, useMemo, useState
+  FC, useCallback, useEffect, useMemo, useState
 } from 'react'
 import { withStyles } from '@material-ui/core'
 import { useMainContext } from '@components/providers/MainProvider'
@@ -42,13 +42,13 @@ const Game: FC<Props> = (props: Props) => {
     dispatch(loader(false))
   }, [])
 
-  const getModelMethods = () => {
+  const getModelMethods = useCallback(() => {
     switch (gameCard.name) {
       case 'snake': return modelMethodsSnake
       case '2048': return modelMethods2048
       default: throw new Error(`Unexpected gameId: ${gameCard.id}`)
     }
-  }
+  }, [gameCard])
 
   return (
     <div className={classes.root}>
