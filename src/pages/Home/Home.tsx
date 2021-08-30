@@ -22,7 +22,7 @@ const Home: FC<Props> = (props: Props) => {
   const onClickCard = useCallback((e: OnClick, card: GameCard) => {
     e.preventDefault()
     history.push(`/game/${card.id}`)
-  }, [])
+  }, [history])
 
   return (
     <main>
@@ -35,12 +35,12 @@ const Home: FC<Props> = (props: Props) => {
                   <CardActionArea className={classes.card} onClick={(e) => onClickCard(e, card)}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image='https://source.unsplash.com/random'
-                      title={card.name}
+                      image={`/static/logo/game-${card.name}.svg`}
+                      title={card.title}
                     />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant='h6'>
-                        {card.name}
+                        {card.title}
                       </Typography>
                     </CardContent>
                   </CardActionArea>

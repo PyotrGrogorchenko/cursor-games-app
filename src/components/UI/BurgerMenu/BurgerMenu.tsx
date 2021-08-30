@@ -6,9 +6,9 @@ import { withRouter } from 'react-router-dom'
 import Drawer from '@material-ui/core/Drawer'
 import clsx from 'clsx'
 import { useMainContext } from '@components/providers/MainProvider'
-import SportsSoccerIcon from '@material-ui/icons/SportsSoccer'
 import { RoutesList } from '@components/routers/MainRouter'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import HomeIcon from '@material-ui/icons/Home'
 import { styles } from './styles'
 import { Props } from './types'
 
@@ -37,7 +37,7 @@ const BurgerMenu: FC<Props> = (props: Props) => {
         >
           <List>
             <ListItem button key='home' onClick={(e) => onClick(e, '/')}>
-              <ListItemIcon><SportsSoccerIcon/></ListItemIcon>
+              <ListItemIcon><HomeIcon/></ListItemIcon>
               <ListItemText primary='Cursor-games'/>
             </ListItem>
             <Divider/>

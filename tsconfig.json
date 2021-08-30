@@ -36,6 +36,7 @@
       "@store/*": ["src/store/*"],
       "@saga/*": ["src/saga/*"],
       "@xhr": ["src/xhr/index"],
+      "@static": ["static/*"],
       "@apiYa/*": ["src/services/api/ya/*"],
       "@apiDb/*": ["src/services/api/db/*"],
       "@validation/*": ["src/services/validation/*"],

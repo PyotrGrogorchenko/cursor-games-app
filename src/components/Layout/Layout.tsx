@@ -61,7 +61,7 @@ const Layout: FC<Props> = (props: Props) => {
               </IconButton>
             </Grid>
             <Grid item sm={3}>
-              <IconButton color='inherit' href='/'>
+              <IconButton color='inherit' onClick={(e) => onRoute(e, '/')}>
                 <HomeIcon/>
               </IconButton>
               <IconButton color='inherit' href='https://github.com/PyotrGrogorchenko/cursor-games-app' target='_blank'>

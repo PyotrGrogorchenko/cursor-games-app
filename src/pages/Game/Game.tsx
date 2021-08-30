@@ -46,7 +46,7 @@ const Game: FC<Props> = (props: Props) => {
     switch (gameCard.name) {
       case 'snake': return modelMethodsSnake
       case '2048': return modelMethods2048
-      default: throw new Error(`Unexpected gameId: ${gameCard.name}`)
+      default: throw new Error(`Unexpected gameId: ${gameCard.id}`)
     }
   }
 
