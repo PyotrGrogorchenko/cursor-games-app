@@ -1,5 +1,4 @@
-<a href="https://cursor-games-app.herokuapp.com/"><img height="80" src="https://cursor-games-app.herokuapp.com/static/logo/.svg"></a>
-
+<a href="https://cursor-games-app.herokuapp.com/"><img height="80" src="https://cursor-games-app.herokuapp.com/static/logo/logo.svg"></a>
 # cursor-games
 
 Mini-games for the keyboard cursor
