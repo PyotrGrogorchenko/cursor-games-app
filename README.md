@@ -1,11 +1,14 @@
 <a href="https://cursor-games-app.herokuapp.com/"><img height="80" src="https://cursor-games-app.herokuapp.com/static/logo/logo-git.svg"></a>
 
+[![app](https://img.shields.io/badge/deploy-passing-green)](https://cursor-games-app.herokuapp.com/)
+
 ## Install
 
 > node 14.x
 
+### development
+
 ```bash
-// development
 npm install
 docker-compose -f docker-compose-dev.yaml up
 ```
