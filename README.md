@@ -6,10 +6,12 @@
 
 ```bash
 // development
-$ docker-compose -f docker-compose-dev.yaml up
-// app - http://localhost:4000
-// api - http://localhost:8000
+npm install
+docker-compose -f docker-compose-dev.yaml up
 ```
+app - [http://localhost:4000](http://localhost:4000)
+api - [http://localhost:8000](http://localhost:8000)
+
 ## Credits
 
 * [PyotrGrogorchenko](https://github.com/PyotrGrogorchenko) - Developer
