@@ -38,8 +38,8 @@ const Game: FC<Props> = (props: Props) => {
     }).then(res => {
       if (res.ok) setApiConnected(true)
       else enqueueSnackbar('Authorization failed', { variant: 'error' })
+      dispatch(loader(false))
     })
-    dispatch(loader(false))
   }, [])
 
   const getModelMethods = useCallback(() => {
