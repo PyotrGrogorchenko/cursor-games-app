@@ -65,6 +65,7 @@
         "@types/react-text-mask": "5.4.6",
         "@types/recompose": "^0.30.8",
         "@types/redux": "3.6.0",
+        "@types/styled-components": "^5.1.13",
         "@types/webpack-dev-server": "3.11.4",
         "@typescript-eslint/eslint-plugin": "4.14.2",
         "@typescript-eslint/parser": "4.14.2",
@@ -121,6 +122,7 @@
         "cookie-parser": "1.4.5",
         "core-js": "3.15.2",
         "express": "4.17.1",
+        "i": "^0.3.6",
         "lodash": "4.17.21",
         "material-ui-number-input": "5.0.24",
         "notistack": "1.0.9",
@@ -142,6 +144,7 @@
         "regenerator-runtime": "0.13.7",
         "sequelize": "6.6.2",
         "sequelize-typescript": "2.1.0",
-        "serve-favicon": "2.5.0"
+        "serve-favicon": "2.5.0",
+        "styled-components": "^5.3.1"
     }
 }

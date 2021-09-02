@@ -43,7 +43,7 @@ const Game: FC<Props> = (props: Props) => {
   }, [])
 
   const getModelMethods = useCallback(() => {
-    switch (gameCard.name) {
+    switch (gameCard.id) {
       case 'snake': return modelMethodsSnake
       case '2048': return modelMethods2048
       default: throw new Error(`Unexpected gameId: ${gameCard.id}`)

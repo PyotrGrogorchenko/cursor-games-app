@@ -1,4 +1,4 @@
-import { CssBaseline, ThemeProvider, createMuiTheme } from '@material-ui/core'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Layout } from '@components/Layout'
@@ -9,6 +9,7 @@ import { NotiError } from '@components/UI/NotiError'
 import { HistoryListener } from '@components/routers/HistoryListener'
 import { BurgerMenu } from '@components/UI/BurgerMenu'
 import { MainProvider } from '@components/providers/MainProvider'
+import { GlobalStyle } from '@components/GlobalStyle'
 
 const theme = createMuiTheme()
 
@@ -19,8 +20,8 @@ export const App = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
+        <GlobalStyle/>
         <NotiProvider>
-          <CssBaseline/>
           <MainProvider>
             <NotiError/>
             <HistoryListener/>
