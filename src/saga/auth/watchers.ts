@@ -39,7 +39,6 @@ function* signupWorker(action: ActionSignup) {
 
 function* signinWorker(action: ActionSignin) {
   const res: ResSignin = yield asyncWorker('postSignin', action.payload)
-  console.log('res', res)
   if (res.status === 200) yield userWorker()
 }
 
