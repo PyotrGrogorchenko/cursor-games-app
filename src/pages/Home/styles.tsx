@@ -13,6 +13,7 @@ export const Grid = styled.div`
   width: 100%;
   max-width: 520px;
   flex-wrap: wrap;
+  margin: 30px 0 0 0;
 `
 
 export const GridItem = styled.div`

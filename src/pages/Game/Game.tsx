@@ -1,9 +1,8 @@
 import React, {
   FC, useCallback, useEffect, useMemo, useState
 } from 'react'
-import { withStyles } from '@material-ui/core'
 import { useMainContext } from '@components/providers/MainProvider'
-import { useParams, withRouter } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getGameCard } from '@games/common/data/gamesList'
 import { login } from '@apiDb/user/actions'
 import { userDataSelector } from '@store/selectors'
@@ -13,11 +12,10 @@ import { loader } from '@store/reducers/main/actions'
 import { Controller } from '@games/common/Controller'
 import { modelMethods as modelMethodsSnake } from '@games/gameSnake/model'
 import { modelMethods as modelMethods2048 } from '@games/game2048/model'
-import { styles } from './styles'
+import { Container } from './styles'
 import { Props } from './types'
 
-const Game: FC<Props> = (props: Props) => {
-  const { classes } = props
+const Game: FC<Props> = () => {
   const { setTitle } = useMainContext()
   const { id } = useParams<{ id: string }>()
   const [apiConnected, setApiConnected] = useState(false)
@@ -51,9 +49,9 @@ const Game: FC<Props> = (props: Props) => {
   }, [gameCard])
 
   return (
-    <div className={classes.root}>
+    <Container>
       {apiConnected && <Controller modelMethods={getModelMethods()}/>}
-    </div>
+    </Container>
   )
 }
-export const GameTSX = withStyles(styles)(withRouter(Game))
+export const GameTSX = Game
