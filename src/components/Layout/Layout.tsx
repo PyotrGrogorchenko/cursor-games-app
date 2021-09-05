@@ -1,19 +1,13 @@
 import React, {
   FC, useCallback
 } from 'react'
-import {
-  AppBar, Grid, IconButton, Typography, withStyles
-} from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import { RoutesList } from '@components/routers/MainRouter'
-import { LinearLoader } from '@components/loaders/LinearLoader'
 import { userAuthSelector, userDataPropSelector } from '@store/selectors'
-import MenuIcon from '@material-ui/icons/Menu'
-import HomeIcon from '@material-ui/icons/Home'
 import { AvatarUI } from '@components/UI/AvatarUI/index'
 import { useMainContext } from '@components/providers/MainProvider'
-import GitHubIcon from '@material-ui/icons/GitHub'
 import { Button } from '@components/UI/Button'
+import { Anchor } from '@components/UI/Anchor'
 import { Props } from './types'
 import { Container, Cell } from './styles'
 
@@ -32,46 +26,47 @@ const Layout: FC<Props> = (props: Props) => {
 
   const onBurger = useCallback((e: OnClick) => {
     e.preventDefault()
-    console.log('onBurger')
-    // setMenuOpen(true)
+    setMenuOpen(true)
   }, [])
 
-  // const UserCell = () => {
-  //   if (!isAuth) {
-  //     return (
-  //       <>
-  //         <Button color='inherit' size='small' onClick={(e) => onRoute(e, '/signin')}>Log in</Button>
-  //         <Button color='inherit' size='small' onClick={(e) => onRoute(e, '/signup')}>Sign up</Button>
-  //       </>
-  //     )
-  //   }
+  const UserCell = useCallback(() => {
+    if (!isAuth) {
+      return (
+        <>
+          <Button onClick={(e) => onRoute(e, '/signin')} icon='signin'>Sign in</Button>
+          <Button onClick={(e) => onRoute(e, '/signup')} icon='userAdd'>Sign up</Button>
+        </>
+      )
+    }
 
-  //   return (
-  //     <>
-  //       <Button color='inherit' size='small' onClick={(e) => onRoute(e, '/profile')}>{userLogin}</Button>
-  //       <AvatarUI/>
-  //     </>
-  //   )
-  // }
+    return (
+      <>
+        <Button onClick={(e) => onRoute(e, '/profile')}>{userLogin}</Button>
+        <AvatarUI/>
+      </>
+    )
+  }, [isAuth])
 
   return (
     <>
       <Container>
         <Cell width='100%'>
           <Cell justifyContent='flex-start' flexGrow={1}>
+            <pre>    </pre>
             <Button onClick={(e) => onBurger(e)} icon='burger'/>
           </Cell>
           <Cell justifyContent='flex-start' flexGrow={5}>
             <Button onClick={(e) => onRoute(e, '/')} icon='home'/>
-            <Button onClick={(e) => onRoute(e, '/')} icon='github'/>
+            <pre>    </pre>
+            <Anchor href='https://github.com/PyotrGrogorchenko/cursor-games-app' icon='github'/>
+            <Button onClick={(e) => onRoute(e, '/')} icon='adjust'/>
           </Cell>
         </Cell>
         <Cell width='100%'>
           {title}
         </Cell>
         <Cell justifyContent='flex-end' width='100%'>
-          <Button onClick={(e) => onRoute(e, '/signin')} icon='signin'>Sign in</Button>
-          <Button onClick={(e) => onRoute(e, '/signup')} icon='userAdd'>Sign up</Button>
+          <UserCell/>
         </Cell>
       </Container>
       {children}
@@ -79,51 +74,3 @@ const Layout: FC<Props> = (props: Props) => {
   )
 }
 export const LayoutTSX = Layout
-
-// <AppBar position='relative'>
-// <Container fixed maxWidth='xl'>
-//  <Grid container spacing={3} alignItems='center'>
-//    <Grid item sm={1}>  const UserCell = () => {
-//   if (!isAuth) {
-//     return (
-//       <>
-//         <Button color='inherit' size='small' onClick={(e) => onRoute(e, '/signin')}>Log in</Button>
-//         <Button color='inherit' size='small' onClick={(e) => onRoute(e, '/signup')}>Sign up</Button>
-//       </>
-//     )
-//   }
-
-//   return (
-//     <>
-//       <Button color='inherit' size='small' onClick={(e) => onRoute(e, '/profile')}>{userLogin}</Button>
-//       <AvatarUI/>
-//     </>
-//   )
-// }
-
-//      <IconButton color='inherit' onClick={(e) => onBurger(e)}>
-//        <MenuIcon/>
-//      </IconButton>
-//    </Grid>
-//    <Grid item sm={3}>
-//      <IconButton color='inherit' onClick={(e) => onRoute(e, '/')}>
-//        <HomeIcon/>
-//      </IconButton>
-//      <IconButton color='inherit' href='https://github.com/PyotrGrogorchenko/cursor-games-app' target='_blank'>
-//        <GitHubIcon/>
-//      </IconButton>//
-//    </Grid>
-//    <Grid item sm={4}>
-//      <Typography align='center' variant='h6'>
-//        {title}
-//      </Typography>
-//    </Grid>
-//    <Grid item sm={4}>
-//      <Grid container spacing={3} alignItems='center' justify='flex-end'>
-//        <UserCell/>
-//      </Grid>
-//    </Grid>
-//  </Grid>
-// </Container>
-// </AppBar>
-// <LinearLoader/>

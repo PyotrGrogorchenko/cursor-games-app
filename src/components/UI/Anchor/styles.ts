@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.button(() => {
+export const Container = styled.a(() => {
   const color = '#ffffff'
 
   return `
@@ -12,7 +12,6 @@ export const Container = styled.button(() => {
   background: ${color};
   transition-duration: 300ms;
   // color: red;
-  
 
   &:hover {
     filter: brightness(95%);

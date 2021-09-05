@@ -1,12 +1,5 @@
 import styled from 'styled-components'
 
-// type CellProps = {
-//   flexGrow?: number
-//   color?: string
-//   width?: string
-// }
-// flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right
-
 export const Container = styled.div`
   display: flex;
   justify-content: center;

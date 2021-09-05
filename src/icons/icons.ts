@@ -12,7 +12,8 @@ export const iconsClasses = {
   signin: 'fas fa-sign-in-alt',
   signout: 'fas fa-sign-out-alt',
   home: 'fas fa-home',
-  github: 'fab fa-github'
+  github: 'fab fa-github',
+  adjust: 'fas fa-adjust'
 }
 
 export type Icons = keyof typeof iconsClasses
