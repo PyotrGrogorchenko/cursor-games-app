@@ -7,7 +7,7 @@ import { getPattern } from '@validation/patterns'
 import { styles } from './styles'
 import { Props } from './types'
 
-const FormField: FC<Props> = (props: Props) => {
+const FormField: FC<Props> = (props) => {
   const {
     id, label, type, value
   } = props

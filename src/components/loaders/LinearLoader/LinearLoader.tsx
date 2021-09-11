@@ -5,7 +5,7 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import { Props } from './types'
 import { styles } from './styles'
 
-const LinearLoader: FC<Props> = (props: Props) => {
+const LinearLoader: FC<Props> = (props) => {
   const { classes } = props
   const isRequest = conditionRequestSelector()
   const isLoader = loaderSelector()

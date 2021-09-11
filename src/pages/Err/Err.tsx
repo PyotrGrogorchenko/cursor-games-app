@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 import { styles } from './styles'
 import { Props } from './types'
 
-const Err: FC<Props> = (props: Props) => {
+const Err: FC<Props> = (props) => {
   const {
     classes, error, errorInfo, hideBtn, history
   } = props

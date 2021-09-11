@@ -13,7 +13,7 @@ import {
 
 let ctx: Ctx
 
-const View: FC<Props> = (props: Props) => {
+const View: FC<Props> = (props) => {
   const [state, setState] = useState(cloneDeep(initialState))
   const { classes, model } = props
   const {

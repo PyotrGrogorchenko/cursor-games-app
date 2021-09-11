@@ -6,7 +6,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import { Props } from './types'
 import { styles } from './styles'
 
-const NotiProvider: FC<Props> = (props: Props) => {
+const NotiProvider: FC<Props> = (props) => {
   const { children, classes } = props
   const notistackRef = createRef<SnackbarProvider>()
   const onClickUndo = (key: SnackbarKey) => () => {

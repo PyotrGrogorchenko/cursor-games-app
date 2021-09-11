@@ -14,7 +14,7 @@ import { Props } from './types'
 
 const anchor = 'left'
 
-const BurgerMenu: FC<Props> = (props: Props) => {
+const BurgerMenu: FC<Props> = (props) => {
   const { classes, history } = props
   const { menuOpen, setMenuOpen } = useMainContext()
 

@@ -16,7 +16,7 @@ import GitHubIcon from '@material-ui/icons/GitHub'
 import { Props } from './types'
 import { styles } from './styles'
 
-const Layout: FC<Props> = (props: Props) => {
+const Layout: FC<Props> = (props) => {
   const { children, history } = props
   const userLogin = userDataPropSelector('login')
   const isAuth = userAuthSelector()

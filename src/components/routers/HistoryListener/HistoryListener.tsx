@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Props } from './types'
 
-const HistoryListener: FC<Props> = (props: Props) => {
+const HistoryListener: FC<Props> = (props) => {
   const { history } = props
   const dispatch = useDispatch()
 

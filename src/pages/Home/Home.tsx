@@ -11,7 +11,7 @@ import { GameCard } from '@games/common/data/types'
 import { styles } from './styles'
 import { Props } from './types'
 
-const Home: FC<Props> = (props: Props) => {
+const Home: FC<Props> = (props) => {
   const { classes, history } = props
   const { setTitle } = useMainContext()
 

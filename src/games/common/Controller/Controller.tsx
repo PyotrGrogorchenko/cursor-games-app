@@ -11,7 +11,7 @@ import { Props } from './types'
 import { View as ViewSnake } from '../../gameSnake/View'
 import { View as View2048 } from '../../game2048/View'
 
-const Controller: FC<Props> = (props: Props) => {
+const Controller: FC<Props> = (props) => {
   const { modelMethods } = props
   const {
     getModelData, onController, clear, updateScoreBest

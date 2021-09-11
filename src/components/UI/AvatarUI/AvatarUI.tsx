@@ -12,7 +12,7 @@ import { styles } from './styles'
 import { Props, AvatarSizeStyle } from './types'
 import { getAvatarPath } from './utils/getAvatarPath'
 
-const AvatarUI: FC<Props> = (props: Props) => {
+const AvatarUI: FC<Props> = (props) => {
   const { classes, showBtn, size } = props
   const refAvatar = useRef(null)
   const pathAvatar = String(userDataPropSelector('avatar'))

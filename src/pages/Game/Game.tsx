@@ -16,7 +16,7 @@ import { modelMethods as modelMethods2048 } from '@games/game2048/model'
 import { styles } from './styles'
 import { Props } from './types'
 
-const Game: FC<Props> = (props: Props) => {
+const Game: FC<Props> = (props) => {
   const { classes } = props
   const { setTitle } = useMainContext()
   const { id } = useParams<{ id: string }>()

@@ -20,7 +20,7 @@ const defaultValues: Fields = {
   newPasswordСonfirm: ''
 }
 
-const ChangePasswordForm: FC<Props> = (props: Props) => {
+const ChangePasswordForm: FC<Props> = (props) => {
   const { classes } = props
   const [open, setOpen] = useState(false)
   const dispatch = useDispatch()

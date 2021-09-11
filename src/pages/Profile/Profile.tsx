@@ -19,7 +19,7 @@ import { useMainContext } from '@components/providers/MainProvider'
 import { styles } from './styles'
 import { Props } from './types'
 
-const Profile: FC<Props> = (props: Props) => {
+const Profile: FC<Props> = (props) => {
   const { classes, history } = props
   const userData = userDataSelector()
   const formContext = useForm<UserData>()

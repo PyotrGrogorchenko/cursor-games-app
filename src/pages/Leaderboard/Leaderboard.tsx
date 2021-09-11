@@ -4,7 +4,7 @@ import { useMainContext } from '@components/providers/MainProvider'
 import { styles } from './styles'
 import { Props } from './types'
 
-const Leaderboard: FC<Props> = (props: Props) => {
+const Leaderboard: FC<Props> = (props) => {
   const { classes } = props
   const { setTitle } = useMainContext()
 

@@ -13,7 +13,7 @@ import { useMainContext } from '@components/providers/MainProvider'
 import { styles } from './styles'
 import { Props } from './types'
 
-const Signin: FC<Props> = (props: Props) => {
+const Signin: FC<Props> = (props) => {
   const { classes, history } = props
   const formContext = useForm<DataSignin>()
   const dispatch = useDispatch()

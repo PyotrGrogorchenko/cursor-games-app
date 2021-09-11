@@ -9,7 +9,7 @@ const MainContext = createContext<Context>({})
 
 export const useMainContext = (): Context => useContext(MainContext)
 
-const MainProvider: FC<Props> = (props: Props) => {
+const MainProvider: FC<Props> = (props) => {
   const { children } = props
 
   const [menuOpen, setMenuOpen] = useState(false)

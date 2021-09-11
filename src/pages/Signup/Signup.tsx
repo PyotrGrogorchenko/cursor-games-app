@@ -13,7 +13,7 @@ import { useMainContext } from '@components/providers/MainProvider'
 import { styles } from './styles'
 import { Props } from './types'
 
-const Signup: FC<Props> = (props: Props) => {
+const Signup: FC<Props> = (props) => {
   const { classes, history } = props
   const formContext = useForm<DataSignup>()
   const dispatch = useDispatch()
