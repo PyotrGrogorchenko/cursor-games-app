@@ -1,4 +1,4 @@
-<a href="https://cursor-games-app.herokuapp.com/"><img height="80" src="https://cursor-games-app.herokuapp.com/static/logo/logo-git.svg"></a>
+<a href="https://cursor-games-app.herokuapp.com/"><img height="80" src="https://ibb.co/nn9r0dy"></a>
 
 [![app](https://img.shields.io/badge/deploy-passing-green)](https://cursor-games-app.herokuapp.com/)
 [![api](https://img.shields.io/badge/api-passing-green)](https://github.com/PyotrGrogorchenko/cursor-games-api)
