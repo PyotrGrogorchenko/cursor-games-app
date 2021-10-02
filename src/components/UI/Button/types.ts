@@ -1,14 +1,7 @@
-import { ReactNode } from 'react'
-import { Icons } from '@icons/icons'
-// import { Types } from '@validation/patterns'
+import { ButtonHTMLAttributes } from 'react'
+import { Icon } from '@components/UI/Icon/utils'
 
 export type Props = {
-  children?: ReactNode
-  icon?: Icons
-  onClick?: (e:OnClick) => void
-  // id: string
-  // label: string
-  // type?: Types
-  // value?: string
-  // required?: boolean
-}
+  icon?: Icon,
+  size?: Size
+} & ButtonHTMLAttributes<HTMLButtonElement>

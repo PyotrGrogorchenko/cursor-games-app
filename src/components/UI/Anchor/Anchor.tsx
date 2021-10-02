@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { getIconClass } from '@icons/getIconClass'
+import { Icon } from '@components/UI/Icon'
 import { Props } from './types'
 import { Container } from './styles'
 
@@ -8,7 +8,7 @@ const Anchor: FC<Props> = (props: Props) => {
 
   return (
     <Container href={href} target='_blank'>
-      { icon && <i className={getIconClass(icon)}/>}
+      {icon && <Icon icon={icon} {...props}/>}
     </Container>
   )
 }

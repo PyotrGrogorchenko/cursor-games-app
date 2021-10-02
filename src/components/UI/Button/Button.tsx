@@ -1,14 +1,19 @@
 import React, { FC } from 'react'
-import { getIconClass } from '@icons/getIconClass'
+import { Icon } from '@components/UI/Icon'
 import { Props } from './types'
 import { Container } from './styles'
 
 const Button: FC<Props> = (props: Props) => {
-  const { children, icon, onClick } = props
+  const {
+    children,
+    icon,
+    size,
+    ...restProps
+  } = props
 
   return (
-    <Container onClick={onClick}>
-      { icon && <i className={getIconClass(icon)}/>}
+    <Container {...restProps}>
+      {icon && <Icon icon={icon} size={size}/>}
       {children && <>&nbsp; {children}</>}
     </Container>
   )

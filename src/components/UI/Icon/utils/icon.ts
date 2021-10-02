@@ -1,4 +1,4 @@
-export const iconsClasses = {
+export const iconClasses = {
   arrow: 'fas fa-long-arrow-alt-right',
   angleRight: 'fas fa-angle-right',
   chatCreate: 'fas fa-comment-medical',
@@ -16,4 +16,4 @@ export const iconsClasses = {
   adjust: 'fas fa-adjust'
 }
 
-export type Icons = keyof typeof iconsClasses
+export type Icon = keyof typeof iconClasses

@@ -1,6 +1,7 @@
-import { Icons } from '@icons/icons'
+import { AnchorHTMLAttributes } from 'react'
+import { Icon } from '../Icon/utils'
 
 export type Props = {
-  icon?: Icons
-  href?: string
-}
+  icon?: Icon,
+  size?: Size
+} & AnchorHTMLAttributes<HTMLElement>

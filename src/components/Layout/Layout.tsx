@@ -33,7 +33,7 @@ const Layout: FC<Props> = (props: Props) => {
     if (!isAuth) {
       return (
         <>
-          <Button onClick={(e) => onRoute(e, '/signin')} icon='signin'>Sign in</Button>
+          <Button onClick={(e) => onRoute(e, '/signin')} icon='signin' size='l'>Sign in</Button>
           <Button onClick={(e) => onRoute(e, '/signup')} icon='userAdd'>Sign up</Button>
         </>
       )
