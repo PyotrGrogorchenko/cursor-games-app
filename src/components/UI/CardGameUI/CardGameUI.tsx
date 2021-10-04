@@ -15,6 +15,9 @@ const CardGameUI: FC<Props> = (props: Props) => {
   return (
     <>
       <Container onClick={(e) => onClickCard(e, card.id)}>
+        {/* <object type='image/svg+xml' data={`/static/logo/game-${card.id}.svg`} color='red'>
+          <img src={`/static/logo/game-${card.id}.svg`} alt='Фолбэк'/>
+        </object> */}
         <Img src={`/static/logo/game-${card.id}.svg`}/>
         <Title>{card.title}</Title>
       </Container>

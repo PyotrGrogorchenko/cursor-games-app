@@ -33,8 +33,8 @@ const Layout: FC<Props> = (props: Props) => {
     if (!isAuth) {
       return (
         <>
-          <Button onClick={(e) => onRoute(e, '/signin')} icon='signin' size='l'>Sign in</Button>
-          <Button onClick={(e) => onRoute(e, '/signup')} icon='userAdd'>Sign up</Button>
+          <Button onClick={(e) => onRoute(e, '/signin')} icon='signin'/>
+          <Button onClick={(e) => onRoute(e, '/signup')} icon='userAdd'/>
         </>
       )
     }
@@ -50,22 +50,20 @@ const Layout: FC<Props> = (props: Props) => {
   return (
     <>
       <Container>
-        <Cell width='100%'>
-          <Cell justifyContent='flex-start' flexGrow={1}>
-            <pre>    </pre>
-            <Button onClick={(e) => onBurger(e)} icon='burger'/>
-          </Cell>
-          <Cell justifyContent='flex-start' flexGrow={5}>
-            <Button onClick={(e) => onRoute(e, '/')} icon='home'/>
-            <pre>    </pre>
-            <Anchor href='https://github.com/PyotrGrogorchenko/cursor-games-app' icon='github'/>
-            <Button onClick={(e) => onRoute(e, '/')} icon='adjust'/>
-          </Cell>
+        <Cell justifyContent='flex-start'>
+          <Button onClick={(e) => onBurger(e)} icon='burger'/>
         </Cell>
-        <Cell width='100%'>
+        <Cell>
+          <Button onClick={(e) => onRoute(e, '/')} icon='home'/>
+        </Cell>
+        <Cell>
+          <Anchor href='https://github.com/PyotrGrogorchenko/cursor-games-app' icon='github'/>
+          <Button onClick={(e) => onRoute(e, '/')} icon='adjust'/>
+        </Cell>
+        <Cell>
           {title}
         </Cell>
-        <Cell justifyContent='flex-end' width='100%'>
+        <Cell justifyContent='flex-end'>
           <UserCell/>
         </Cell>
       </Container>

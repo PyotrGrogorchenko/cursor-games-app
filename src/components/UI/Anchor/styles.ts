@@ -7,9 +7,9 @@ export const Container = styled.a<Props>((props) => `
   border: none;
   border-radius: 5px; 
   cursor: pointer;
-  font-size: ${String(10 + 5 * props.theme.sizing[props.size || 'm'])}px;
+  font-size: ${props.theme.sizing.button[props.size || 'm']}px;
   color: ${props.theme.palette.primary};
-  background-color: inherit;
+  background-color: ${props.theme.palette.secondary};
   transition-duration: 300ms;
   &:hover {
     filter: brightness(95%);

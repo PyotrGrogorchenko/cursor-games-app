@@ -1,17 +1,21 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.div(() => `
   display: flex;
   flex-direction: column;
   width: 240px;
-  margin: 10px;
-`
+  &:hover {
+    filter: invert(30%);
+  }
+`)
 
-export const Img = styled.img`
+export const Img = styled.img(() => `
   height 200px;
   width: 240px;
-`
-export const Title = styled.h3`
+`)
+
+export const Title = styled.h3((props) => `
   text-align: center;
-  margin: 2px;
-`
+  color: ${props.theme.palette.primary};
+  font-size: ${props.theme.sizing.text.h5};
+`)

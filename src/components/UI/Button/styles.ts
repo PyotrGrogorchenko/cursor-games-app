@@ -6,12 +6,12 @@ export const Container = styled.button<Props>((props) => `
   flex-direction: row;
   align-items: center;
   padding: 3px 5px 3px 5px;
-  font-size: ${String(8 + 5 * props.theme.sizing[props.size || 'm'])}px;
+  font-size: ${props.theme.sizing.button[props.size || 'm']};
   border: none;
   border-radius: 5px; 
   cursor: pointer;
   transition-duration: 300ms;
-  background-color: inherit;
+  background-color: ${props.theme.palette.secondary};
   &:hover {
     filter: brightness(95%);
   } 

@@ -1,25 +1,12 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height 90vh;
-  width: 100%;
-  align-items: center;
-`
-
-export const Grid = styled.div`
-  display: flex;
-  width: 100%;
-  max-width: 520px;
-  flex-wrap: wrap;
-  margin: 30px 0 0 0;
-`
-
-export const GridItem = styled.div`
-  display: flex;
-  height: 200px;
-  width: 240px;
-  background-color: green;
-  margin: 10px;
-`
+export const Container = styled.div((props) => `
+  display: grid;
+  grid-template-columns: 240px 240px;
+  padding: 20px;
+  grid-gap: 20px;
+  justify-content: center;
+  @media (max-width: ${props.theme.breakpoints.mobileLandscape}) {
+    grid-template-columns: 240px;
+  }
+`)

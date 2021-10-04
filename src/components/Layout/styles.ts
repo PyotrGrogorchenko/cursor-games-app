@@ -1,30 +1,17 @@
 import styled from 'styled-components'
+import { CellProps } from './types'
 
-export const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height 40px;
-  width: 100%;
-  background-color:#ffffff;
-  box-shadow: inset 0 -1px 0 #e6e6e6;
- `
+export const Container = styled.div((props) => `
+  display: grid;
+  padding: 5px;
+  background-color: ${props.theme.palette.secondary};
+  box-shadow: inset 0 -1px 0 ${props.theme.palette.shadow};
+  grid-template-columns: 5% 10% 15% 40% 30%;
+`)
 
-type CellProps = {
-  flexGrow?: number
-  color?: string
-  width?: string
-  justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'start' | 'end' | 'left' | 'right'
-}
-
-export const Cell = styled.div<CellProps>`
+export const Cell = styled.div<CellProps>((props) => `
  display: flex;
- justify-content: ${props => props.justifyContent || 'center'};
+ flex-direction: row;
+ justify-content: ${props.justifyContent || 'center'};
  align-items: center;
- ${props => `width: ${props.width}` || ''};
- height: 100%;
- background-color:${props => props.color || '#ffffff'};
- box-shadow: inset 0 -1px 0 #e6e6e6;
- 
- flex-grow: ${props => props.flexGrow || 1};
-`
+`)
