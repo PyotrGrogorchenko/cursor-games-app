@@ -32,11 +32,15 @@ export const Label = styled.label((props) => `margin: 0;
   top: .55rem;
   font-size: ${props.theme.sizing.button.m};
   color: ${props.theme.palette.tertiary};
-  transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+  transition: top 200ms ease-in, font-size 200ms ease-in, color 200ms ease-in;
   ${InputStyled}:focus ~ &,
   ${InputStyled}:not(${InputStyled}:placeholder-shown) ~ & {
     top: -.4rem;
     font-size: ${props.theme.sizing.button.s};
+    color: ${props.theme.palette.common};
+  }
+  ${InputStyled}:not(${InputStyled}:focus) ~ & {
+    color: ${props.theme.palette.tertiary};
   }
 `)
 
@@ -49,7 +53,11 @@ export const FocusBorder = styled.span((props) => `
     height: 0;
     transition: .2s;
   }
-  ${InputStyled}:hover ~ &,
+  ${InputStyled}:hover ~ & {
+    height: 2px;
+    transition: .2s;
+    background-color: ${props.theme.palette.primary};
+  } 
   ${InputStyled}:focus ~ & {
     height: 2px;
     transition: .2s;
