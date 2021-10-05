@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect } from 'react'
 import {
-  Box, Button, withStyles
+  Box, withStyles
 } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
@@ -10,6 +10,8 @@ import { useDispatch } from 'react-redux'
 import { signin } from '@saga/auth/actions'
 import { conditionSuccessSelector } from '@store/selectors'
 import { useMainContext } from '@components/providers/MainProvider'
+import { Button } from '@components/UI/Button'
+import { Input } from '@components/UI/Input'
 import { styles } from './styles'
 import { Props } from './types'
 
@@ -43,8 +45,15 @@ const Signin: FC<Props> = (props: Props) => {
         <form className={classes.formControl} onSubmit={formContext.handleSubmit(onSubmit)}>
           <FormField id='login' label='Login' type='login'/>
           <FormField id='password' label='Password' type='password'/>
-          <Button variant='contained' color='primary' type='submit'>Sign in</Button>
-          <Button color='default' onClick={onClick}>Sign up</Button>
+
+          <Input id='1'/>
+          <Input id='2'/>
+          <Input id='3'/>
+          <Input id='4'/>
+          <Input id='5'/>
+
+          <Button type='submit'>Sign in</Button>
+          <Button onClick={onClick}>Sign up</Button>
         </form>
       </FormProvider>
     </Box>

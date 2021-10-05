@@ -13,8 +13,8 @@ const Button: FC<Props> = (props: Props) => {
 
   return (
     <Container size={size} {...restProps}>
-      {icon && <Icon icon={icon} size={size}/>}
-      {children && <>&nbsp; {children}</>}
+      {icon && <><Icon icon={icon} size={size}/>&nbsp;</>}
+      {children && children}
     </Container>
   )
 }

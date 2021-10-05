@@ -6,17 +6,17 @@ export const styles = (theme: Theme) => createStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
-    '& > *': {
-      margin: theme.spacing(1)
-    }
+    alignItems: 'center'
+    // '& > *': {
+    //   //margin: theme.spacing(1)
+    // }
   },
   inputFile: {
     display: 'none'
   },
   smallSize: {
-    width: theme.spacing(4),
-    height: theme.spacing(4)
+    width: theme.spacing(3),
+    height: theme.spacing(3)
   },
   middleSize: {
     width: theme.spacing(9),

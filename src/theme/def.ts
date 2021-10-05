@@ -3,6 +3,7 @@ import { Palette, Theme } from 'typings/styled'
 const palette: Palette = {
   primary: '#333333',
   secondary: '#ffffff',
+  tertiary: 'rgb(107 107 107)',
   common: '#FF9011',
   shadow: '#e6e6e6',
   error: '#ed4b48',

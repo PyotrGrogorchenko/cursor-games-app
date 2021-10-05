@@ -58,7 +58,7 @@ const Layout: FC<Props> = (props: Props) => {
         </Cell>
         <Cell>
           <Anchor href='https://github.com/PyotrGrogorchenko/cursor-games-app' icon='github'/>
-          <Button onClick={(e) => onRoute(e, '/')} icon='adjust'/>
+          <Button onClick={(e) => onRoute(e, '/')} icon='adjust'>adjust</Button>
         </Cell>
         <Cell>
           {title}
