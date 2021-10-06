@@ -22,8 +22,14 @@ const text = {
 
 const button = {
   s: '12px',
-  m: '20px',
-  l: '28px'
+  m: '15px',
+  l: '25px'
+}
+
+const input = {
+  s: '12px',
+  m: '15px',
+  l: '25px'
 }
 
 const breakpoints = {
@@ -34,11 +40,17 @@ const breakpoints = {
   desktop: '1400px'
 }
 
+const mixins = {
+  fontFamily: 'font-family: \'Roboto\', sans-serif;'
+}
+
 export const theme: Theme = {
   palette,
   sizing: {
     text,
-    button
+    button,
+    input
   },
-  breakpoints
+  breakpoints,
+  mixins
 }

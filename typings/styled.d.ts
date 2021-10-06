@@ -10,6 +10,9 @@ type Sizing = {
   },
   button: {
     [key in Size]: string
+  },
+  input: {
+    [key in Size]: string
   }
 }
 
@@ -21,16 +24,22 @@ type Breakpoints = {
   desktop: string
 }
 
+type Mixins = {
+  fontFamily: string
+}
+
 type Theme = {
   palette: Palette,
   sizing: Sizing,
-  breakpoints: Breakpoints
+  breakpoints: Breakpoints,
+  mixins: Mixins
 }
 
 declare module 'styled-components' {
   export interface DefaultTheme {
     palette: Palette,
     sizing: Sizing,
-    breakpoints: Breakpoints
+    breakpoints: Breakpoints,
+    mixins: Mixins
   }
 }

@@ -11,8 +11,9 @@ export const Container = styled.button<Props>((props) => `
   border-radius: 5px; 
   cursor: pointer;
   transition-duration: 300ms;
-  background-color: ${props.theme.palette.secondary};
+  background-color: inherit;
+  color: ${props.theme.palette.tertiary};
   &:hover {
-    filter: brightness(95%);
+    color: ${props.theme.palette.common};
   } 
 `)

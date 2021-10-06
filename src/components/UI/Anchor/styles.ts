@@ -8,10 +8,10 @@ export const Container = styled.a<Props>((props) => `
   border-radius: 5px; 
   cursor: pointer;
   font-size: ${props.theme.sizing.button[props.size || 'm']}px;
-  color: ${props.theme.palette.primary};
+  color: ${props.theme.palette.tertiary};
   background-color: ${props.theme.palette.secondary};
   transition-duration: 300ms;
   &:hover {
-    filter: brightness(95%);
+    color: ${props.theme.palette.common};
   } 
 `)

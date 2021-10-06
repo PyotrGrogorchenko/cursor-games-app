@@ -10,13 +10,15 @@ import {
 const Input: FC<Props> = (props: Props) => {
   const {
     id,
+    width,
+    label,
     ...restProps
   } = props
 
   return (
-    <Container>
-      <InputStyled id={id} placeholder='{mock}' {...restProps}/>
-      <Label htmlFor={id}>Test</Label>
+    <Container style={{ width }}>
+      <InputStyled id={id} {...restProps}/>
+      <Label htmlFor={id}>{label}</Label>
       <FocusBorder/>
     </Container>
   )
