@@ -4,6 +4,14 @@
 [![api](https://img.shields.io/badge/api-passing-green)](https://github.com/PyotrGrogorchenko/cursor-games-api)
 [![fligma](https://img.shields.io/badge/fligma-v1-green)](https://www.figma.com/file/ZEJ6aAcKSzreORbW0HelZB/Cursor-games?node-id=0%3A1)
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Javascript_Logo.png" width=30 height=30 alt="JavaScript"/> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1024px-Typescript_logo_2020.svg.png" width=30 height=30 alt="TypeScript"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/800px-React-icon.svg.png" width=40 height=30 alt="React"/><img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" width=30 height=30 alt="HTML 5"/> <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/CSS.3.svg" width=30 height=30 alt="CSS"/>
+ <img src="https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png" width=40 height=30 alt="docker"/> <img src="assets/redux-logo.png" width=30 height=30 alt="redux"/> <img src="assets/redux-saga.png" width=40 height=30 alt="redux-saga"/> <img src="https://github.com/webpack/media/blob/master/logo/icon-square-big.svg" width=30 height=30 alt="webpack"/> <img src="assets/node-logo.png" width=40
+  height=30 alt="nodejs"/> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/800px-Postgresql_elephant.svg.png" width=30 height=30 alt="postgresql"/> 
+
+## Description
+
+The application consisting of mini-games that only need the keyboard cursor.
+
 ## Install
 
 > node 14.x
