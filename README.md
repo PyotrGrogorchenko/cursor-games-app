@@ -14,7 +14,7 @@ The application consisting of mini-games that only need the keyboard cursor.
 
 ## Project phase
 
-In progress remaking to [styled-components](https://styled-components.com/).
+In progress remaking to [styled-components](https://styled-components.com/).  
 In backlog сreating a lot of games, like: [Tetris](https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D1%82%D1%80%D0%B8%D1%81), [Nifty-lifty](https://idpixel.ru/games/niftylifty/), [Jumping-jack](http://zxspectrum.online/game/jumping-jack/) etc.
 
 ## Install
