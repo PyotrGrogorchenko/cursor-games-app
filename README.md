@@ -19,4 +19,4 @@ api - [http://localhost:8000](http://localhost:8000)
 
 ## Credits
 
-* [PyotrGrogorchenko](https://github.com/PyotrGrogorchenko) - Developer
+* [PyotrGrigorchenko](https://github.com/PyotrGrogorchenko) - Developer
