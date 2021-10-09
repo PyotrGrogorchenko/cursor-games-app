@@ -1,6 +1,6 @@
-<div><a href="https://cursor-games-app.herokuapp.com/"><img height="80" src="https://i.ibb.co/fnfMS6W/logo-git.png"></a>[![app](https://img.shields.io/badge/deploy-passing-green)](https://cursor-games-app.herokuapp.com/)
+<div><a href="https://cursor-games-app.herokuapp.com/"><img height="80" src="https://i.ibb.co/fnfMS6W/logo-git.png"></a><div>[![app](https://img.shields.io/badge/deploy-passing-green)](https://cursor-games-app.herokuapp.com/)
 [![api](https://img.shields.io/badge/api-passing-green)](https://github.com/PyotrGrogorchenko/cursor-games-api)
-[![fligma](https://img.shields.io/badge/fligma-v1-green)](https://www.figma.com/file/ZEJ6aAcKSzreORbW0HelZB/Cursor-games?node-id=0%3A1)</div>
+[![fligma](https://img.shields.io/badge/fligma-v1-green)](https://www.figma.com/file/ZEJ6aAcKSzreORbW0HelZB/Cursor-games?node-id=0%3A1)</div></div>
 
 ## Languages and tools
 
