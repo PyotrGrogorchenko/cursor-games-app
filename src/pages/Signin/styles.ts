@@ -1,23 +1,23 @@
-import { createStyles, Theme } from '@material-ui/core'
+import styled from 'styled-components'
 
-export const styles = (theme: Theme) => createStyles({
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    height: '80vh',
-    width: '100%'
+export const Form = styled.form(() => `
+  display: grid;
+  grid-template-areas: 'data' 'buttons';
+  grid-template-columns: 300px;
+  grid-template-rows: 500px;
+  justify-content: center;
+`)
 
-  },
-  formControl: {
-    display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    flexDirection: 'column',
-    minWidth: '300px',
-    '& > *': {
-      margin: theme.spacing(1)
-    }
-  }
-})
+export const Content = styled.div(() => `
+  grid-area: data;
+  align-self: center;
+  display: grid;
+  grid-gap: 10px;
+`)
+
+export const Buttons = styled.div(() => `
+  grid-area: buttons;
+  display: grid;
+  justify-items: center;
+  grid-gap: 5px;
+`)

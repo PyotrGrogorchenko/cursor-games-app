@@ -3,7 +3,6 @@ import { CellProps } from './types'
 
 export const Container = styled.div((props) => `
   display: grid;
-  padding: 5px;
   background-color: ${props.theme.palette.secondary};
   box-shadow: inset 0 -1px 0 ${props.theme.palette.shadow};
   grid-template-columns: 5% 10% 15% 40% 30%;

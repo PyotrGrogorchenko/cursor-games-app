@@ -4,17 +4,14 @@ import { Props } from './types'
 const transTime = '.3s'
 
 export const Container = styled.div(() => `
+  display: flex;
+  flex-direction: column;
   position: relative;
-  margin: 0;
   width: 100%;
 `)
 
 export const InputStyled = styled.input<Props>((props) => `
   ${props.theme.mixins.fontFamily}
-  position: relative;
-  top: 0;
-  left: 0;
-  margin: 0;
   width: 100%;
   font-size: ${props.theme.sizing.input.m};
   color: ${props.theme.palette.primary};
@@ -23,19 +20,22 @@ export const InputStyled = styled.input<Props>((props) => `
   padding: 10px 0 5px 0;
   border: 0;
   border-bottom: 1px solid ${props.theme.palette.tertiary};
+  transition: border-bottom ${transTime} ease-out;
+  :focus {
+    border-bottom: 1px solid ${props.theme.palette.common};
+  }
 `)
 
 export const Label = styled.label<Props>((props) => {
-  const { inputValue } = props
+  const { val } = props
   return `
-  margin: 0;
   ${props.theme.mixins.fontFamily}
   position: absolute;
   left: 0;
-  top: ${inputValue ? '-.4rem' : '.75rem'};
-  font-size: ${props.theme.sizing.input.s};
+  top: ${val ? '-.4rem' : '.75rem'};
+  font-size: ${val ? props.theme.sizing.input.s : props.theme.sizing.input.m};
   color: ${props.theme.palette.tertiary};
-  transition: color ${transTime} ease-in, top ${transTime} ease-in;
+  transition: color ${transTime} ease-in, top ${transTime} ease-in, font-size ${transTime} ease-in;
   
   ${InputStyled}:hover ~ & {
     transition: ${transTime};
@@ -45,17 +45,15 @@ export const Label = styled.label<Props>((props) => {
     transition: ${transTime};
     top: -.4rem;
     color: ${props.theme.palette.common};
+    font-size: ${props.theme.sizing.input.s};
   } 
 `
 })
 
 export const FocusBorder = styled.span((props) => `
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 0%;
-  height: 1px;
-  transition: width ${transTime} ease-out, height ${transTime} cubic-bezier(1, 1, 1, 1);
+  height: 2px;
+  transition: width ${transTime} ease-out, background-color ${transTime} ease-out;
   background-color: ${props.theme.palette.tertiary};
 
   ${InputStyled}:hover ~ & {

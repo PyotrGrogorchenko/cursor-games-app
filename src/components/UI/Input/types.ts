@@ -3,5 +3,5 @@ import { InputHTMLAttributes } from 'react'
 export type Props = {
   width?: string,
   label?: string,
-  inputValue?: string
+  val?: string | number | readonly string[] | undefined
 } & InputHTMLAttributes<HTMLInputElement>

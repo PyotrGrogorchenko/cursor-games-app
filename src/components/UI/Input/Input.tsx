@@ -1,5 +1,5 @@
 import React, {
-  FC, FocusEvent, useCallback, useRef, useState
+  FocusEvent, useState, forwardRef
 } from 'react'
 import { Props } from './types'
 import {
@@ -9,27 +9,26 @@ import {
   FocusBorder
 } from './styles'
 
-const Input: FC<Props> = (props: Props) => {
+const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const {
-    id, width, label, ...restProps
+    id, width, label, defaultValue, onBlur, ...restProps
   } = props
 
-  const inputRef = useRef<HTMLInputElement>(null)
-  const [inputValue, setInputValue] = useState('')
+  const [val, setVal] = useState(defaultValue)
 
-  const onBlur = useCallback((e: FocusEvent<HTMLInputElement>) => {
+  const onBlurLocal = (e: FocusEvent<HTMLInputElement>) => {
     e.preventDefault()
-    if (!inputRef.current) return
-    setInputValue(inputRef.current.value)
-  }, [inputRef])
+    if (onBlur) onBlur(e)
+    setVal(e.target.value)
+  }
 
   return (
     <Container style={{ width }}>
-      <InputStyled id={id} ref={inputRef} onBlur={onBlur} {...restProps}/>
-      <Label htmlFor={id} inputValue={inputValue}>{label}</Label>
+      <InputStyled id={id} ref={ref} onBlur={onBlurLocal} {...restProps}/>
+      <Label htmlFor={id} val={val}>{label}</Label>
       <FocusBorder/>
     </Container>
   )
-}
+})
 
 export const InputTSX = Input

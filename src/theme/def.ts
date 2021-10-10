@@ -21,14 +21,14 @@ const text = {
 }
 
 const button = {
-  s: '12px',
-  m: '15px',
+  s: '15px',
+  m: '20px',
   l: '25px'
 }
 
 const input = {
-  s: '12px',
-  m: '15px',
+  s: '15px',
+  m: '20px',
   l: '25px'
 }
 
