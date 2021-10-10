@@ -13,18 +13,18 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args}/>
 export const Btn = Template.bind({})
 Btn.args = {
   icon: 'home',
-  children: 'Children',
+  children: 'Button',
   size: 'm',
   variant: 'outlined',
-  color: 'success',
+  color: 'primary',
   href: '',
   disabled: false
 }
 
 export const Link = Template.bind({})
 Link.args = {
-  icon: 'home',
-  children: 'Children',
+  icon: 'github',
+  children: 'github.com',
   size: 'm',
   variant: 'outlined',
   color: 'success',
