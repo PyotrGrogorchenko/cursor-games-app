@@ -4,7 +4,7 @@ export const Container = styled.div(() => `
   display: flex;
   flex-direction: column;
   width: 240px;
-  &:hover {
+  :hover {
     filter: invert(30%);
   }
 `)

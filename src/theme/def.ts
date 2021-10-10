@@ -1,4 +1,4 @@
-import { Palette, Theme } from 'typings/styled'
+import { Palette, Theme } from './types'
 
 const palette: Palette = {
   primary: '#333333',

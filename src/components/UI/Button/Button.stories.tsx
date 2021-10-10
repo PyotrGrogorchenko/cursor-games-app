@@ -1,6 +1,5 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-
 import { Button } from './index'
 
 // eslint-disable-next-line no-restricted-syntax
@@ -11,21 +10,24 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args}/>
 
-export const All = Template.bind({})
-All.args = {
+export const Btn = Template.bind({})
+Btn.args = {
   icon: 'home',
-  children: 'Home',
-  size: 'm'
+  children: 'Children',
+  size: 'm',
+  variant: 'outlined',
+  color: 'success',
+  href: '',
+  disabled: false
 }
 
-export const Icon = Template.bind({})
-Icon.args = {
+export const Link = Template.bind({})
+Link.args = {
   icon: 'home',
-  size: 'm'
-}
-
-export const Text = Template.bind({})
-Text.args = {
-  children: 'Home',
-  size: 'm'
+  children: 'Children',
+  size: 'm',
+  variant: 'outlined',
+  color: 'success',
+  href: 'https://github.com/PyotrGrogorchenko/cursor-games-app',
+  disabled: false
 }

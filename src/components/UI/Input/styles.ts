@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { Props } from './types'
 
+const transTime = '.3s'
+
 export const Container = styled.div(() => `
   position: relative;
   margin: 0;
@@ -18,48 +20,54 @@ export const InputStyled = styled.input<Props>((props) => `
   color: ${props.theme.palette.primary};
   outline: none;
   background: none;
-  box-sizing: border-box;
   padding: 10px 0 5px 0;
   border: 0;
+  border-bottom: 1px solid ${props.theme.palette.tertiary};
 `)
 
-export const Label = styled.label((props) => `
+export const Label = styled.label<Props>((props) => {
+  const { inputValue } = props
+  return `
   margin: 0;
   ${props.theme.mixins.fontFamily}
   position: absolute;
   left: 0;
-  top: -.4rem;
+  top: ${inputValue ? '-.4rem' : '.75rem'};
   font-size: ${props.theme.sizing.input.s};
   color: ${props.theme.palette.tertiary};
-  transition: color 200ms ease-in;
+  transition: color ${transTime} ease-in, top ${transTime} ease-in;
   
   ${InputStyled}:hover ~ & {
-    transition: .2s;
+    transition: ${transTime};
     color: ${props.theme.palette.primary};
   } 
   ${InputStyled}:focus ~ & {
-    transition: .2s;
+    transition: ${transTime};
+    top: -.4rem;
     color: ${props.theme.palette.common};
   } 
-`)
+`
+})
 
 export const FocusBorder = styled.span((props) => `
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 0%;
   height: 1px;
-  transition: .2s;
+  transition: width ${transTime} ease-out, height ${transTime} cubic-bezier(1, 1, 1, 1);
   background-color: ${props.theme.palette.tertiary};
 
   ${InputStyled}:hover ~ & {
     height: 2px;
-    transition: .2s;
+    transition: ${transTime};
     background-color: ${props.theme.palette.primary};
+    width: 100%;
   } 
   ${InputStyled}:focus ~ & {
     height: 2px;
-    transition: .2s;
+    transition: ${transTime};
     background-color: ${props.theme.palette.common};
+    width: 100%;
   } 
 `)

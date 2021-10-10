@@ -7,7 +7,6 @@ import { userAuthSelector, userDataPropSelector } from '@store/selectors'
 import { AvatarUI } from '@components/UI/AvatarUI/index'
 import { useMainContext } from '@components/providers/MainProvider'
 import { Button } from '@components/UI/Button'
-import { Anchor } from '@components/UI/Anchor'
 import { Props } from './types'
 import { Container, Cell } from './styles'
 
@@ -57,8 +56,8 @@ const Layout: FC<Props> = (props: Props) => {
           <Button onClick={(e) => onRoute(e, '/')} icon='home'/>
         </Cell>
         <Cell>
-          <Anchor href='https://github.com/PyotrGrogorchenko/cursor-games-app' icon='github'/>
-          <Button onClick={(e) => onRoute(e, '/')} icon='adjust'>adjust</Button>
+          <Button href='https://github.com/PyotrGrogorchenko/cursor-games-app' icon='github'/>
+          <Button onClick={(e) => onRoute(e, '/')} icon='adjust'/>
         </Cell>
         <Cell>
           {title}

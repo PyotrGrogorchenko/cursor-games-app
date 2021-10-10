@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { Props } from './types'
 import { Container, Img, Title } from './styles'
 
-const CardGameUI: FC<Props> = (props: Props) => {
+const CardGame: FC<Props> = (props: Props) => {
   const { card } = props
   const history = useHistory()
 
@@ -15,9 +15,6 @@ const CardGameUI: FC<Props> = (props: Props) => {
   return (
     <>
       <Container onClick={(e) => onClickCard(e, card.id)}>
-        {/* <object type='image/svg+xml' data={`/static/logo/game-${card.id}.svg`} color='red'>
-          <img src={`/static/logo/game-${card.id}.svg`} alt='Фолбэк'/>
-        </object> */}
         <Img src={`/static/logo/game-${card.id}.svg`}/>
         <Title>{card.title}</Title>
       </Container>
@@ -25,4 +22,4 @@ const CardGameUI: FC<Props> = (props: Props) => {
   )
 }
 
-export const CardGameUITSX = CardGameUI
+export const CardGameTSX = CardGame

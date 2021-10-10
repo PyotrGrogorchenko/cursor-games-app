@@ -1,22 +1,36 @@
 import React, { FC } from 'react'
 import { Icon } from '@components/UI/Icon'
-import { Props } from './types'
-import { Container } from './styles'
+import { Props, PropsCommon } from './types'
+import { ButtonStyled, AnchorStyled } from './styles'
 
-const Button: FC<Props> = (props: Props) => {
+const Button: FC<Props> = (props) => {
   const {
-    children,
-    icon,
-    size,
-    ...restProps
+    children, icon, size, href, ...restProps
   } = props
 
-  return (
-    <Container size={size} {...restProps}>
+  const renderChildren = (
+    <>
       {icon && <Icon icon={icon} size={size}/>}
       {icon && children && <>&nbsp;</> }
       {children && children}
-    </Container>
+    </>
+  )
+
+  return (
+    <>
+      {href
+      && (
+        <AnchorStyled size={size} href={href} {...restProps as PropsCommon} target='_blank'>
+          {renderChildren}
+        </AnchorStyled>
+      )}
+      {!href
+      && (
+        <ButtonStyled size={size} {...restProps}>
+          {renderChildren}
+        </ButtonStyled>
+      )}
+    </>
   )
 }
 
