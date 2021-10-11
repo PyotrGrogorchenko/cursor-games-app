@@ -32,7 +32,7 @@ export const Label = styled.label<Props>((props) => {
   ${props.theme.mixins.fontFamily}
   position: absolute;
   left: 0;
-  top: ${val ? '-.4rem' : '.75rem'};
+  top: ${val ? '-.7rem' : '.75rem'};
   font-size: ${val ? props.theme.sizing.input.s : props.theme.sizing.input.m};
   color: ${props.theme.palette.tertiary};
   transition: color ${transTime} ease-in, top ${transTime} ease-in, font-size ${transTime} ease-in;
@@ -43,7 +43,7 @@ export const Label = styled.label<Props>((props) => {
   } 
   ${InputStyled}:focus ~ & {
     transition: ${transTime};
-    top: -.4rem;
+    top: -.7rem;
     color: ${props.theme.palette.common};
     font-size: ${props.theme.sizing.input.s};
   } 
@@ -68,4 +68,12 @@ export const FocusBorder = styled.span((props) => `
     background-color: ${props.theme.palette.common};
     width: 100%;
   } 
+`)
+
+export const ErrSpan = styled.span((props) => `
+  width: 100%;
+  ${props.theme.mixins.fontFamily}
+  color: ${props.theme.palette.error};
+  font-size: ${props.theme.sizing.input.s};
+  margin-top: 3px;
 `)

@@ -6,47 +6,43 @@ import { signin } from '@saga/auth/actions'
 import { conditionSuccessSelector } from '@store/selectors'
 import { useMainContext } from '@components/providers/MainProvider'
 import { Button } from '@components/UI/Button'
-import { Input } from '@components/UI/Input'
-import { Props } from './types'
+import { useHistory } from 'react-router-dom'
+import { FormField } from '@components/UI/FormField1'
 import { Form, Content, Buttons } from './styles'
 
-const Signin: FC<Props> = () => {
+const Signin: FC = () => {
   const dispatch = useDispatch()
   const postSigninSuccess = conditionSuccessSelector('postSignin')
   const { setTitle } = useMainContext()
+  const history = useHistory()
 
   const formContext = useForm<DataSignin>()
-  const {
-    register,
-    handleSubmit
-  } = formContext
+  const { handleSubmit } = formContext
 
-  // console.log('formContext', formContext)
   useEffect(() => {
     setTitle('Signin')
   }, [])
 
   useEffect(() => {
-    // if (postSigninSuccess) history.push('/')
-  }, [postSigninSuccess])
+    if (postSigninSuccess) history.push('/')
+  }, [postSigninSuccess, history])
 
   const onSubmit: SubmitHandler<DataSignin> = useCallback(data => {
-    console.log('data', data)
     dispatch(signin(data))
   }, [])
 
   const onSignup = useCallback((e: OnClick) => {
     e.preventDefault()
-    // history.push('/signup')
-  }, [])
+    history.push('/signup')
+  }, [history])
 
   return (
     <>
       <FormProvider {...formContext}>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Content>
-            <Input id='login' label='login' {...register('login')}/>
-            <Input id='password' label='Password' type='password' {...register('password')}/>
+            <FormField id='login' label='Login' type='login'/>
+            <FormField id='password' label='Password' type='password'/>
           </Content>
           <Buttons>
             <Button variant='contained' type='submit'>Sign in</Button>

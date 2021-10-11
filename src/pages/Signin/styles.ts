@@ -12,7 +12,7 @@ export const Content = styled.div(() => `
   grid-area: data;
   align-self: center;
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 20px;
 `)
 
 export const Buttons = styled.div(() => `

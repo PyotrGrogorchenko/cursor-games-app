@@ -3,23 +3,20 @@ import React, {
 } from 'react'
 import { Props } from './types'
 import {
-  InputStyled,
-  Label,
-  Container,
-  FocusBorder
+  InputStyled, Label, Container, FocusBorder, ErrSpan
 } from './styles'
 
 const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const {
-    id, width, label, defaultValue, onBlur, ...restProps
+    id, width, label, errMassage = 'Field is filled in incorrectly', valid, defaultValue, onBlur, ...restProps
   } = props
 
   const [val, setVal] = useState(defaultValue)
 
   const onBlurLocal = (e: FocusEvent<HTMLInputElement>) => {
     e.preventDefault()
-    if (onBlur) onBlur(e)
     setVal(e.target.value)
+    if (onBlur) onBlur(e)
   }
 
   return (
@@ -27,6 +24,7 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
       <InputStyled id={id} ref={ref} onBlur={onBlurLocal} {...restProps}/>
       <Label htmlFor={id} val={val}>{label}</Label>
       <FocusBorder/>
+      {!valid && <ErrSpan>{errMassage}</ErrSpan>}
     </Container>
   )
 })

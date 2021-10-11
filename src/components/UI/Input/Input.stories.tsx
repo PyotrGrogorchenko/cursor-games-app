@@ -16,5 +16,7 @@ Default.args = {
   id: '1',
   type: 'text',
   label: 'Имя',
-  width: '300px'
+  width: '300px',
+  valid: false,
+  errMassage: undefined
 }
