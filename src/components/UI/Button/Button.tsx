@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Icon } from '@components/UI/Icon'
-import { Props, PropsCommon } from './types'
 import { ButtonStyled, AnchorStyled } from './styles'
+import { Props, PropsCommon } from './types'
 
 const Button: FC<Props> = (props) => {
   const {

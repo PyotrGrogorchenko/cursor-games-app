@@ -7,7 +7,7 @@ import { conditionSuccessSelector } from '@store/selectors'
 import { useMainContext } from '@components/providers/MainProvider'
 import { Button } from '@components/UI/Button'
 import { useHistory } from 'react-router-dom'
-import { FormField } from '@components/UI/FormField1'
+import { FormField } from '@components/UI/FormField'
 import { Form, Content, Buttons } from './styles'
 
 const Signin: FC = () => {

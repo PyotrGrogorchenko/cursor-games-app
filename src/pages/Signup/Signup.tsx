@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect } from 'react'
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
-import { FormField } from '@components/UI/FormField1'
+import { FormField } from '@components/UI/FormField'
 import { DataSignup } from '@apiYa/auth/types'
 import { useDispatch } from 'react-redux'
 import { signup } from '@saga/auth/actions'

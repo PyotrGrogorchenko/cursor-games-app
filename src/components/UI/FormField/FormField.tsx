@@ -1,47 +1,30 @@
 import React, { FC, useMemo } from 'react'
-import {
-  withStyles, TextField
-} from '@material-ui/core'
-import { Controller, useFormContext } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import { getPattern } from '@validation/patterns'
-import { styles } from './styles'
 import { Props } from './types'
+import { Input } from '../Input'
 
 const FormField: FC<Props> = (props: Props) => {
   const {
     id, label, type, value
   } = props
   const {
-    control,
+    register,
     formState: { errors }
   } = useFormContext()
 
   const pattern = useMemo(() => getPattern(type), [])
 
   return (
-    <Controller
-      name={id}
-      control={control}
-      rules={{
-        required: true,
-        pattern: pattern.pattern
-      }}
-      defaultValue={value || ''}
-      render={({ field }) => (
-        <TextField
-          {...field}
-          label={label}
-          size='small'
-          fullWidth
-          type={type === 'password' ? 'password' : 'text'}
-          id={field.name}
-          inputRef={field.ref}
-          error={!!errors[id]}
-          helperText={!!errors[id] && pattern.tip}
-        />
-      )}
-    />
+    <Input
+      id={id}
+      label={label}
+      valid={!errors[id]}
+      errMassage={pattern.tip}
+      type={type === 'password' ? 'password' : 'text'}
+      defaultValue={value}
+      {...register(id, { required: true, pattern: pattern.pattern })}/>
   )
 }
 
-export const FormFieldTSX = withStyles(styles)(FormField)
+export const FormFieldTSX = FormField
