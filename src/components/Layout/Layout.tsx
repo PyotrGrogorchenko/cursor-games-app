@@ -4,7 +4,7 @@ import React, {
 import { useHistory } from 'react-router-dom'
 import { RoutesList } from '@components/routers/MainRouter'
 import { userAuthSelector, userDataPropSelector } from '@store/selectors'
-import { AvatarUI } from '@components/UI/AvatarUI/index'
+import { Avatar } from '@components/UI/Avatar/index'
 import { useMainContext } from '@components/providers/MainProvider'
 import { Button } from '@components/UI/Button'
 import { Props } from './types'
@@ -41,7 +41,7 @@ const Layout: FC<Props> = (props: Props) => {
     return (
       <>
         <Button onClick={(e) => onRoute(e, '/profile')}>{userLogin}</Button>
-        <AvatarUI/>
+        <Avatar/>
       </>
     )
   }, [isAuth])

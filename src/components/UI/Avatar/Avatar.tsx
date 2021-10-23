@@ -1,25 +1,22 @@
 import React, {
   FC, useCallback, useEffect, useRef, useState
 } from 'react'
-import {
-  Avatar, Box, Button, withStyles
-} from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import { userDataPropSelector } from '@store/selectors'
 import { avatar } from '@saga/user/actions'
-import PhotoCameraIcon from '@material-ui/icons/PhotoCamera'
-import { styles } from './styles'
-import { Props, AvatarSizeStyle } from './types'
+import { Button } from '@components/UI/Button'
+import {
+  Box, InputFile, AvatarImg
+} from './styles'
+import { Props } from './types'
 import { getAvatarPath } from './utils/getAvatarPath'
 
-const AvatarUI: FC<Props> = (props: Props) => {
-  const { classes, showBtn, size } = props
+const Avatar: FC<Props> = (props: Props) => {
+  const { showBtn } = props
   const refAvatar = useRef(null)
   const pathAvatar = String(userDataPropSelector('avatar'))
   const [srcAvatar, setSrcAvatar] = useState(getAvatarPath(pathAvatar))
   const dispatch = useDispatch()
-
-  const avatarClassName: AvatarSizeStyle = (size ? `${size}Size` : 'smallSize') as AvatarSizeStyle
 
   useEffect(() => {
     setSrcAvatar(getAvatarPath(pathAvatar))
@@ -44,26 +41,10 @@ const AvatarUI: FC<Props> = (props: Props) => {
   }, [])
 
   return (
-    <Box className={classes.root}>
-      <Avatar
-        className={classes[avatarClassName]}
-        src={srcAvatar}
-      />
-      {showBtn && (
-        <Button
-          variant='contained'
-          color='primary'
-          type='submit'
-          size='small'
-          id='upload-a-photo'
-          onClick={onClickAvatar}
-          startIcon={<PhotoCameraIcon/>}
-        >
-          Upload a photo
-        </Button>
-      )}
-      <input
-        className={classes.inputFile}
+    <Box>
+      <AvatarImg src={srcAvatar} alt='Avatar' {...props}/>
+      {showBtn && (<Button variant='contained' onClick={onClickAvatar}>Upload a photo</Button>)}
+      <InputFile
         type='file'
         accept='.png, .jpg, .jpeg, .gif'
         onChange={onChangeAvatar}
@@ -73,4 +54,4 @@ const AvatarUI: FC<Props> = (props: Props) => {
   )
 }
 
-export const AvatarUITSX = withStyles(styles)(AvatarUI)
+export const AvatarTSX = Avatar

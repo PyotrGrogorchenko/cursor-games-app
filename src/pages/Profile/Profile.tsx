@@ -3,7 +3,7 @@ import { Button } from '@components/UI/Button'
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
 import { FormField } from '@components/UI/FormField'
 import { UserData } from '@apiYa/user/types'
-// import { AvatarUI } from '@components/UI/AvatarUI'
+import { Avatar } from '@components/UI/Avatar'
 import { userDataSelector, conditionSuccessSelector, conditionSelector } from '@store/selectors'
 import { logout } from '@saga/auth/actions'
 import { profile } from '@saga/user/actions'
@@ -51,7 +51,7 @@ const Profile: FC = () => {
       <FormProvider {...formContext}>
         {userData && (
           <>
-            {/* <AvatarUI showBtn size='large'/> */}
+            <Avatar showBtn size='l'/>
             <Form onSubmit={formContext.handleSubmit(onSubmit)}>
               <Content>
                 <FormField id='first_name' label='First name' type='name' value={userData.first_name}/>
