@@ -15,9 +15,9 @@ export const Content = styled.div(() => `
   grid-gap: 20px;
 `)
 
-export const Buttons = styled.div(() => `
+export const Actions = styled.div(() => `
   grid-area: buttons;
   display: grid;
   justify-items: center;
-  grid-gap: 5px;
+  grid-gap: 10px;
 `)

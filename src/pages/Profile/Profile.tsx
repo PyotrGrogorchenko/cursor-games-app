@@ -9,10 +9,10 @@ import { logout } from '@saga/auth/actions'
 import { profile } from '@saga/user/actions'
 import { useSnackbar } from 'notistack'
 import { useDispatch } from 'react-redux'
-// import { ChangePasswordForm } from '@components/forms/ChangePasswordForm'
 import { useMainContext } from '@components/providers/MainProvider'
+import { ChangePasswordForm } from '@components/forms/ChangePasswordForm'
 import { useHistory } from 'react-router'
-import { Form, Content, Buttons } from './styles'
+import { Form, Content, Actions } from './styles'
 
 const Profile: FC = () => {
   const userData = userDataSelector()
@@ -61,16 +61,12 @@ const Profile: FC = () => {
                 <FormField id='email' label='Email' type='email' value={userData.email}/>
                 <FormField id='phone' label='Phone' type='phone' value={userData.phone}/>
               </Content>
-              <Buttons>
-
-                <Button variant='contained' type='submit'>Save</Button>
+              <Actions>
+                <Button variant='contained' color='success' type='submit'>Save</Button>
+                <ChangePasswordForm/>
                 <Button variant='outlined' color='error' onClick={onLogout}>Log out</Button>
-
-                {/* <Button variant='contained' color='primary' type='submit' startIcon={<SaveIcon/>}>Save</Button>
-                <Button variant='outlined' color='secondary' size='small' onClick={onLogout} startIcon={<MeetingRoomIcon/>}>Log out</Button> */}
-              </Buttons>
+              </Actions>
             </Form>
-            {/* <ChangePasswordForm/> */}
           </>
         )}
       </FormProvider>

@@ -1,15 +1,21 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { AvatarUI } from './index'
+import { Avatar } from './index'
+import { initStore } from '../../../store'
+import { ProviderWrapper } from '../../../../.storybook/Provider'
 
 // eslint-disable-next-line no-restricted-syntax
 export default {
   title: 'UI/Avatar',
-  component: AvatarUI
-} as ComponentMeta<typeof AvatarUI>
+  component: Avatar
+} as ComponentMeta<typeof Avatar>
 
-const Template: ComponentStory<typeof AvatarUI> = (args) => <AvatarUI {...args}/>
+const Template: ComponentStory<typeof Avatar> = (args) => (
+  <ProviderWrapper store={initStore()}>
+    <Avatar {...args}/>
+  </ProviderWrapper>
+)
 
 export const Default = Template.bind({})
 Default.args = {}

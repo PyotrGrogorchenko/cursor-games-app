@@ -6,6 +6,8 @@ export const Container = styled.div((props) => `
   background-color: ${props.theme.palette.secondary};
   box-shadow: inset 0 -1px 0 ${props.theme.palette.shadow};
   grid-template-columns: 5% 10% 15% 40% 30%;
+  position: sticky;
+  top: 0;
 `)
 
 export const Cell = styled.div<CellProps>((props) => `

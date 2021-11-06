@@ -11,12 +11,4 @@ export type PropsCommon = {
   disabled?: boolean
 }
 
-export type Props = {
-} & PropsCommon & ButtonHTMLAttributes<HTMLButtonElement>
-
-// export type PropsButton = {
-// } & Props & ButtonHTMLAttributes<HTMLButtonElement>
-
-// export type PropsAnchor = {
-//   disabled?: boolean
-// } & Props // & AnchorHTMLAttributes<HTMLElement>
+export type Props = PropsCommon & ButtonHTMLAttributes<HTMLButtonElement>

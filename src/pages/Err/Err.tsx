@@ -1,15 +1,12 @@
 import React, { FC, useCallback } from 'react'
-import {
-  Box, Button, Typography, withStyles
-} from '@material-ui/core'
-import { withRouter } from 'react-router-dom'
-import { styles } from './styles'
+import { Button } from '@components/UI/Button'
+import { useHistory } from 'react-router-dom'
 import { Props } from './types'
+import { Container, Header, Message } from './styles'
 
 const Err: FC<Props> = (props: Props) => {
-  const {
-    classes, error, errorInfo, hideBtn, history
-  } = props
+  const { error, errorInfo, hideBtn } = props
+  const history = useHistory()
 
   const onClick = useCallback((e: OnClick) => {
     e.preventDefault()
@@ -17,24 +14,23 @@ const Err: FC<Props> = (props: Props) => {
   }, [history])
 
   return (
-    <Box className={classes.content}>
-      <Typography align='center' variant='h3' color='error'>
+    <Container>
+      <Header>
         {error || 'Sorry'}
-      </Typography>
-      <Typography align='center' variant='h5'>
+      </Header>
+      <Message>
         {errorInfo || 'Something went wrong'}
-      </Typography>
+      </Message>
       { !hideBtn && (
         <Button
-          className={classes.buttonBack}
           color='primary'
           onClick={onClick}
         >
           Back
         </Button>
       ) }
-    </Box>
+    </Container>
   )
 }
 
-export const ErrTSX = withStyles(styles)(withRouter(Err))
+export const ErrTSX = Err

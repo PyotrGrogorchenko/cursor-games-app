@@ -9,7 +9,8 @@ module.exports = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    'storybook-addon-styled-component-theme/dist/preset'
+    'storybook-addon-styled-component-theme/dist/preset',
+    'addon-redux'
   ],
   core: {
     'builder': 'webpack5'
@@ -21,6 +22,7 @@ module.exports = {
       path.resolve(__dirname, '..')
     ] 
  
+    config.devtool = 'source-map',
     config.resolve.plugins = config.resolve.plugins || [];
 
     config.resolve.plugins.push(

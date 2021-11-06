@@ -1,5 +1,4 @@
-import { WithStyles } from '@material-ui/core'
-import { styles } from './styles'
+// import { WithStyles } from '@material-ui/core'
 
-export type Props = {
-} & WithStyles<typeof styles>
+// export type Props = {
+// } & WithStyles<typeof styles>

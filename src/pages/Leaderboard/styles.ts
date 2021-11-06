@@ -1,11 +1,15 @@
-import { createStyles } from '@material-ui/core/styles'
+import styled from 'styled-components'
 
-export const styles = () => createStyles({
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '80vh'
-  }
-})
+export const Container = styled.div((props) => `
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: ${props.theme.palette.secondary}
+`)
+
+export const Header = styled.h1((props) => `
+  font-size: ${props.theme.sizing.text.h3};
+`)

@@ -5,6 +5,7 @@ export const iconClasses = {
   chatDelete: 'fas fa-comment-slash',
   userAdd: 'fas fa-user-plus',
   userRemove: 'fas fa-user-minus',
+  user: 'fas fa-user',
   search: 'fas fa-search',
   paperPlane: 'fas fa-paper-plane',
   camera: 'c-middle fas fa-camera',
@@ -13,7 +14,8 @@ export const iconClasses = {
   signout: 'fas fa-sign-out-alt',
   home: 'fas fa-home',
   github: 'fab fa-github',
-  adjust: 'fas fa-adjust'
+  adjust: 'fas fa-adjust',
+  close: 'far fa-times-circle'
 }
 
 export type Icon = keyof typeof iconClasses

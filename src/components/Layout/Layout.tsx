@@ -7,6 +7,7 @@ import { userAuthSelector, userDataPropSelector } from '@store/selectors'
 import { Avatar } from '@components/UI/Avatar/index'
 import { useMainContext } from '@components/providers/MainProvider'
 import { Button } from '@components/UI/Button'
+import { LinearLoader } from '@components/loaders/LinearLoader'
 import { Props } from './types'
 import { Container, Cell } from './styles'
 
@@ -40,7 +41,7 @@ const Layout: FC<Props> = (props: Props) => {
 
     return (
       <>
-        <Button onClick={(e) => onRoute(e, '/profile')}>{userLogin}</Button>
+        <Button size='s' onClick={(e) => onRoute(e, '/profile')}>{userLogin}</Button>
         <Avatar/>
       </>
     )
@@ -66,6 +67,7 @@ const Layout: FC<Props> = (props: Props) => {
           <UserCell/>
         </Cell>
       </Container>
+      <LinearLoader/>
       {children}
     </>
   )

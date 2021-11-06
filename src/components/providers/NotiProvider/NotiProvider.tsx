@@ -1,31 +1,28 @@
-import React, { createRef, FC } from 'react'
-import { withStyles, IconButton } from '@material-ui/core'
-import { withRouter } from 'react-router-dom'
+import React, { createRef, FC, useCallback } from 'react'
 import { SnackbarKey, SnackbarProvider } from 'notistack'
-import CloseIcon from '@material-ui/icons/Close'
+import { Button } from '@components/UI/Button'
 import { Props } from './types'
-import { styles } from './styles'
+import { notiClasses } from './styles'
 
 const NotiProvider: FC<Props> = (props: Props) => {
-  const { children, classes } = props
+  const { children } = props
   const notistackRef = createRef<SnackbarProvider>()
-  const onClickUndo = (key: SnackbarKey) => () => {
+
+  const onClickUndo = useCallback((key: SnackbarKey) => () => {
     notistackRef.current?.closeSnackbar(key)
-  }
+  }, [])
 
   return (
     <SnackbarProvider
       ref={notistackRef}
       classes={{
-        variantSuccess: classes.success,
-        variantError: classes.error,
-        variantWarning: classes.warning,
-        variantInfo: classes.info
+        variantSuccess: notiClasses.success,
+        variantError: notiClasses.error,
+        variantWarning: notiClasses.warning,
+        variantInfo: notiClasses.info
       }}
       action={(key) => (
-        <IconButton onClick={onClickUndo(key)} color='inherit'>
-          <CloseIcon/>
-        </IconButton>
+        <Button onClick={onClickUndo(key)} icon='close' color='secondary'/>
       )}
       maxSnack={5}
       dense
@@ -39,4 +36,4 @@ const NotiProvider: FC<Props> = (props: Props) => {
     </SnackbarProvider>
   )
 }
-export const NotiProviderTSX = withStyles(styles)(withRouter(NotiProvider))
+export const NotiProviderTSX = NotiProvider

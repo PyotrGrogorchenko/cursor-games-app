@@ -1,0 +1,53 @@
+version: "3.3"
+
+services:
+  
+  web:
+    container_name: app-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
+    restart: always
+    environment:
+      NODE_ENV: production
+    working_dir: /app
+    networks:
+      - main
+    depends_on:
+      - api
+
+  api:
+    container_name: app-api
+    build:
+      context: https://github.com/PyotrGrogorchenko/cursor-games-api.git#main:.
+      dockerfile: ./Dockerfile
+    ports:
+      - 8000:8000
+    restart: always
+    networks:
+      - main
+    depends_on:
+      - db      
+  
+  db:
+    container_name: app-db
+    image: postgres:13.3-alpine
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: qwerty
+      POSTGRES_DB: games
+    ports:
+      - 5432:5432
+    volumes:
+     - db-data:/var/lib/postgresql/data/
+    restart: always
+    networks:
+      - main
+
+volumes:
+  db-data:      
+networks:
+  main:
+    driver: bridge   

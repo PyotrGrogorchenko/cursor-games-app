@@ -13,27 +13,6 @@ import { MainProvider } from '@components/providers/MainProvider'
 import { GlobalStyle } from '@components/GlobalStyle'
 import { getTheme } from 'src/theme'
 
-// const palette = {
-//   primary: '#333333',
-//   secondary: '#ffffff',
-//   error: '#ed4b48',
-//   warning: '#ffb400',
-//   success: '#26b47f'
-// }
-// export type Color = keyof typeof palette
-
-// const spacing = {
-//   s: 1,
-//   m: 2,
-//   l: 3
-// }
-// export type Size = keyof typeof spacing
-
-// const theme = {
-//   palette,
-//   spacing
-// }
-
 const themeMui = createMuiTheme()
 
 export const App = () => {

@@ -15,8 +15,8 @@ export const InputFile = styled.input(() => `
 export const AvatarImg = styled.img<Props>((props) => {
   const { size } = props
   return `
-    width: ${(size === 'm' && '60px') || (size === 'l' && '100px') || '20px'};
-    height: ${(size === 'm' && '60px') || (size === 'l' && '100px') || '20px'};
+    width: ${(size === 'm' && '100px') || (size === 'l' && '200px') || '20px'};
+    height: ${(size === 'm' && '100px') || (size === 'l' && '200px') || '20px'};
     margin: 5px;
     border-radius: 50%; 
   `
