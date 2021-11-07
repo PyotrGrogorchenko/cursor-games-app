@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import { getGameCard } from '@games/common/data/gamesList'
 import { login } from '@apiDb/user/actions'
 import { userDataSelector } from '@store/selectors'
-import { useSnackbar } from 'notistack'
+// import { useSnackbar } from 'notistack'
 import { useDispatch } from 'react-redux'
 import { loader } from '@store/reducers/main/actions'
 import { Controller } from '@games/common/Controller'
@@ -20,7 +20,7 @@ const Game: FC<Props> = () => {
   const { id } = useParams<{ id: string }>()
   const [apiConnected, setApiConnected] = useState(false)
   const userData = userDataSelector()
-  const { enqueueSnackbar } = useSnackbar()
+  // const { enqueueSnackbar } = useSnackbar()
   const dispatch = useDispatch()
 
   const gameCard = useMemo(() => getGameCard(id), [id])
@@ -35,7 +35,7 @@ const Game: FC<Props> = () => {
       displayName: userData.display_name || userData.login
     }).then(res => {
       if (res.ok) setApiConnected(true)
-      else enqueueSnackbar('Authorization failed', { variant: 'error' })
+      // else enqueueSnackbar('Authorization failed', { variant: 'error' })
       dispatch(loader(false))
     })
   }, [])

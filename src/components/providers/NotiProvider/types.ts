@@ -1,5 +1,9 @@
 import { ReactNode } from 'react'
 
 export type Props = {
-  children: ReactNode
+  children: ReactNode,
+}
+
+export type Context = {
+  pushNoti: (text: string, type?: string) => void
 }

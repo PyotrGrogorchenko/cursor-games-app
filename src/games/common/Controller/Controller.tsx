@@ -5,7 +5,7 @@ import React, {
 import { Keys } from '@games/common/types'
 import { userDataSelector } from '@store/selectors'
 import { getScore, saveScore } from '@apiDb/score/actions'
-import { useSnackbar } from 'notistack'
+// import { useSnackbar } from 'notistack'
 import { getObserver, resetObserver } from '@games/common/utils/observer'
 import { Props } from './types'
 import { View as ViewSnake } from '../../gameSnake/View'
@@ -20,7 +20,7 @@ const Controller: FC<Props> = (props: Props) => {
   const [modelData, setModelData] = useState(getModelData())
   const { condition, gameId } = modelData
   const userData = userDataSelector()
-  const { enqueueSnackbar } = useSnackbar()
+  // const { enqueueSnackbar } = useSnackbar()
 
   const onKeyDown = useCallback(({ key }: KeyboardEvent) => {
     onController(key as Keys)
@@ -36,7 +36,7 @@ const Controller: FC<Props> = (props: Props) => {
     if (userData) {
       getScore(Number(userData?.id), modelData)
         .then(resScore => {
-          if (!resScore.ok) enqueueSnackbar('Failed to get score', { variant: 'error' })
+          // if (!resScore.ok) enqueueSnackbar('Failed to get score', { variant: 'error' })
           updateScoreBest(resScore.score)
         })
     }
@@ -52,7 +52,7 @@ const Controller: FC<Props> = (props: Props) => {
     if (!userData || modelData.condition !== 'gameOver') return
     saveScore(userData.id, modelData)
       .then(res => {
-        if (!res.ok) enqueueSnackbar('Failed to save score', { variant: 'error' })
+        // if (!res.ok) enqueueSnackbar('Failed to save score', { variant: 'error' })
       })
   }, [condition])
 

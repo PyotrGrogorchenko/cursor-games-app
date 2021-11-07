@@ -7,11 +7,12 @@ import { Avatar } from '@components/UI/Avatar'
 import { userDataSelector, conditionSuccessSelector, conditionSelector } from '@store/selectors'
 import { logout } from '@saga/auth/actions'
 import { profile } from '@saga/user/actions'
-import { useSnackbar } from 'notistack'
+// import { useSnackbar } from 'notistack'
 import { useDispatch } from 'react-redux'
 import { useMainContext } from '@components/providers/MainProvider'
 import { ChangePasswordForm } from '@components/forms/ChangePasswordForm'
 import { useHistory } from 'react-router'
+import { useNoti } from '@components/providers/NotiProvider'
 import { Form, Content, Actions } from './styles'
 
 const Profile: FC = () => {
@@ -21,16 +22,18 @@ const Profile: FC = () => {
   const putProfileSuccess = conditionSuccessSelector('putProfile')
   const putLogoutSuccess = conditionSuccessSelector('postLogout')
   const condition = conditionSelector()
-  const { enqueueSnackbar } = useSnackbar()
+  // const { enqueueSnackbar } = useSnackbar()
   const { setTitle } = useMainContext()
   const history = useHistory()
+  const { pushNoti } = useNoti()
 
   useEffect(() => {
     setTitle('Profile')
   }, [])
 
   useEffect(() => {
-    if (putProfileSuccess) enqueueSnackbar('Profile saved', { variant: 'success' })
+    // if (putProfileSuccess) enqueueSnackbar('Profile saved', { variant: 'success' })
+    if (putProfileSuccess) pushNoti('Profile saved')
   }, [putProfileSuccess])
 
   useEffect(() => {

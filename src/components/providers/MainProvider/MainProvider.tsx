@@ -5,7 +5,6 @@ import { Props, Context } from './types'
 
 // @ts-ignore
 const MainContext = createContext<Context>({})
-
 export const useMainContext = (): Context => useContext(MainContext)
 
 const MainProvider: FC<Props> = (props) => {

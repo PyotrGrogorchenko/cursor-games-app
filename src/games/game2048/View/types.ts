@@ -1,10 +1,8 @@
-import { WithStyles } from '@material-ui/core'
 import { Data } from '../model/types'
-import { styles } from './styles'
 
 export type Props = {
   model: Data
-} & WithStyles<typeof styles>
+}
 
 export type State = {
   init: boolean

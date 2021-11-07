@@ -1,39 +1,71 @@
-import React, { createRef, FC, useCallback } from 'react'
-import { SnackbarKey, SnackbarProvider } from 'notistack'
-import { Button } from '@components/UI/Button'
-import { Props } from './types'
-import { notiClasses } from './styles'
+import React, {
+  FC, useCallback, useState, createContext, useContext, useEffect
+} from 'react'
+import { Noti, Message } from '@components/providers/Noti'
+import { Props, Context } from './types'
+import { Container } from './styles'
 
-const NotiProvider: FC<Props> = (props: Props) => {
+// @ts-ignore
+const NotiContext = createContext<Context>({})
+export const useNoti = (): Context => useContext(NotiContext)
+
+function getIdFunc() {
+  let id = 1
+  return () => id++
+}
+
+let timerId: NodeJS.Timer | null = null
+
+const NotiProvider: FC<Props> = (props) => {
   const { children } = props
-  const notistackRef = createRef<SnackbarProvider>()
+  const [stack, setStack] = useState<{message: Message, deleteTime: Date | null}[]>([])
+  const getId = useCallback(getIdFunc(), [])
 
-  const onClickUndo = useCallback((key: SnackbarKey) => () => {
-    notistackRef.current?.closeSnackbar(key)
+  const clearStack = useCallback(() => {
+    setStack(prev => prev.filter(noti => {
+      if (!noti.deleteTime) return true
+      return (+new Date() - +noti.deleteTime) < 1000
+    }))
+  }, [stack])
+
+  const setTimer = useCallback(() => {
+    timerId = setInterval(() => {clearStack()}, 1000)
+  }, [stack])
+
+  useEffect(() => {
+    setTimer()
+    return () => {if (timerId) clearInterval(timerId)}
   }, [])
 
+  const onClose = useCallback((id: number, deleteTime: null | Date) => {
+    stack.forEach((item) => {
+      if (item.message.id === id) {
+        item.deleteTime = deleteTime
+      }
+    })
+  }, [stack])
+
+  const pushNoti = useCallback((text: string, type: string = 'info') => {
+    stack.push({
+      message: {
+        text,
+        type,
+        id: getId()
+      },
+      deleteTime: null
+    })
+    setStack([...stack])
+  }, [stack])
+
   return (
-    <SnackbarProvider
-      ref={notistackRef}
-      classes={{
-        variantSuccess: notiClasses.success,
-        variantError: notiClasses.error,
-        variantWarning: notiClasses.warning,
-        variantInfo: notiClasses.info
-      }}
-      action={(key) => (
-        <Button onClick={onClickUndo(key)} icon='close' color='secondary'/>
-      )}
-      maxSnack={5}
-      dense
-      preventDuplicate
-      anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'left'
-      }}
-    >
-      {children}
-    </SnackbarProvider>
+    <>
+      <NotiContext.Provider value={{ pushNoti }}>
+        <Container>
+          {stack.map((noti) => <Noti key={noti.message.id} {...noti.message} onClose={onClose}/>)}
+        </Container>
+        {children}
+      </NotiContext.Provider>
+    </>
   )
 }
 export const NotiProviderTSX = NotiProvider
