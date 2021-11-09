@@ -17,7 +17,7 @@ const text = {
   h3: '34px',
   h4: '27px',
   h5: '20px',
-  h6: '13px'
+  h6: '15px'
 }
 
 const button = {

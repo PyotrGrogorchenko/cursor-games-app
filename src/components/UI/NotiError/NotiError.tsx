@@ -1,18 +1,16 @@
 import { FC, useEffect } from 'react'
-// import { useSnackbar } from 'notistack'
 import { useDispatch } from 'react-redux'
 import { errDataSelector } from '@store/selectors'
 import { err } from '@store/reducers/err/actions'
+import { useNoti } from '@components/UI/Noti/NotiProvider'
 import { Props } from './types'
 
 const NotiError: FC<Props> = () => {
-  // const { enqueueSnackbar } = useSnackbar()
+  const { pushNoti } = useNoti()
   const dispatch = useDispatch()
   const errData = errDataSelector()
   useEffect(() => {
-    if (errData) {
-      // enqueueSnackbar(errData.message, { variant: 'error' })
-    }
+    if (errData) {pushNoti(errData.message, 'error')}
     dispatch(err())
   }, [errData])
 

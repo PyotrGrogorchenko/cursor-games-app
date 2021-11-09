@@ -11,6 +11,5 @@ export const Container = styled.div(() => `
 `)
 
 export const Canvas = styled.canvas<CanvasHTMLAttributes<HTMLCanvasElement>>((props) => `
-  border: 5px solid,
-  borderColor: ${props.theme.palette.primary}
+  border: 5px solid ${props.theme.palette.primary}
 `)
