@@ -3,20 +3,25 @@ import React, {
 } from 'react'
 import { useHistory } from 'react-router-dom'
 import { RoutesList } from '@components/routers/MainRouter'
-import { userAuthSelector, userDataPropSelector } from '@store/selectors'
+import { themeSelector, userAuthSelector, userDataPropSelector } from '@store/selectors'
 import { Avatar } from '@components/UI/Avatar/index'
 import { useMainContext } from '@components/providers/MainProvider'
 import { Button } from '@components/UI/Button'
 import { LinearLoader } from '@components/loaders/LinearLoader'
+import { set } from '@saga/theme/actions'
+import { useDispatch } from 'react-redux'
 import { Props } from './types'
 import { Container, Cell } from './styles'
 
 const Layout: FC<Props> = (props: Props) => {
   const { children } = props
   const history = useHistory()
+  const dispatch = useDispatch()
 
   const userLogin = userDataPropSelector('login')
   const isAuth = userAuthSelector()
+  const theme = themeSelector()
+
   const { setMenuOpen, title } = useMainContext()
 
   const onRoute = useCallback((e: OnClick, route: RoutesList) => {
@@ -28,6 +33,11 @@ const Layout: FC<Props> = (props: Props) => {
     e.preventDefault()
     setMenuOpen(true)
   }, [])
+
+  const onAdjust = useCallback((e: OnClick) => {
+    e.preventDefault()
+    dispatch(set(theme === 'light' ? 'dark' : 'light'))
+  }, [theme])
 
   const UserCell = useCallback(() => {
     if (!isAuth) {
@@ -58,7 +68,7 @@ const Layout: FC<Props> = (props: Props) => {
         </Cell>
         <Cell>
           <Button href='https://github.com/PyotrGrogorchenko/cursor-games-app' icon='github'/>
-          <Button onClick={(e) => onRoute(e, '/')} icon='adjust'/>
+          <Button onClick={onAdjust} icon='adjust'/>
         </Cell>
         <Cell>
           {title}

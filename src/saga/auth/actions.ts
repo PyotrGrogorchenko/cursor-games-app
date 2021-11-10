@@ -10,7 +10,7 @@ export enum Actions {
 
 type ActionBase = {
   type: Actions
-  payload?: any
+  payload?: unknown
 }
 
 // USER

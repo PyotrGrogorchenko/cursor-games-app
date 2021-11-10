@@ -10,19 +10,24 @@ import { HistoryListener } from '@components/routers/HistoryListener'
 import { BurgerMenu } from '@components/UI/BurgerMenu'
 import { MainProvider } from '@components/providers/MainProvider'
 import { GlobalStyle } from '@components/GlobalStyle'
-import { getTheme } from 'src/theme'
+import { getTheme } from '@theme'
+import { themeSelector } from '@store/selectors'
 
 export const App = () => {
+  const theme = themeSelector()
+
   const dispatch = useDispatch()
-  useEffect(() => {dispatch(user())}, [])
+  useEffect(() => {
+    dispatch(user())
+  }, [])
 
   return (
     <>
-      <ThemeProvider theme={getTheme()}>
+      <ThemeProvider theme={getTheme(theme)}>
         <GlobalStyle/>
         <NotiProvider>
           <MainProvider>
-            {/* <NotiError/> */}
+            <NotiError/>
             <HistoryListener/>
             <BurgerMenu/>
             <Layout>

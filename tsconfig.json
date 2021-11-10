@@ -43,6 +43,7 @@
       "@games/*": ["src/games/*"],
       "@env/*": ["env/*"],
       "@HOCs": ["src/HOCs/index"],
+      "@theme": ["src/theme/index"],
       "@utils": ["src/utils/index"]
     }       
   },
