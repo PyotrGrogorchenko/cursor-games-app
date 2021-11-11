@@ -9,7 +9,7 @@ import { logout } from '@saga/auth/actions'
 import { profile } from '@saga/user/actions'
 import { useDispatch } from 'react-redux'
 import { useMainContext } from '@components/providers/MainProvider'
-import { ChangePasswordForm } from '@components/forms/ChangePasswordForm'
+// import { ChangePasswordForm } from '@components/forms/ChangePasswordForm'
 import { useHistory } from 'react-router'
 import { useNoti } from '@components/UI/Noti/NotiProvider'
 import { Form, Content, Actions } from './styles'
@@ -63,7 +63,7 @@ const Profile: FC = () => {
               </Content>
               <Actions>
                 <Button variant='contained' color='success' type='submit'>Save</Button>
-                <ChangePasswordForm/>
+                {/* <ChangePasswordForm/> */}
                 <Button variant='outlined' color='error' onClick={onLogout}>Log out</Button>
               </Actions>
             </Form>

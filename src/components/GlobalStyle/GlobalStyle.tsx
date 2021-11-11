@@ -1,10 +1,10 @@
 import { createGlobalStyle } from 'styled-components'
 
-const GlobalStyle = createGlobalStyle((props) => `
+const GlobalStyle = createGlobalStyle(() => `
   * {
       margin: 0;
       padding: 0;
-      background-color: ${props.theme.palette.secondary};
+      background-color: transparent;
       font-family: 'Roboto', sans-serif;
   }`)
 export const GlobalStyleTSX = GlobalStyle

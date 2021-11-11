@@ -1,5 +1,5 @@
-import { theme as light } from './light'
-import { theme as dark } from './dark'
+import { theme as light } from './versions/light'
+import { theme as dark } from './versions/dark'
 import { Theme } from './types'
 
 const themes = {

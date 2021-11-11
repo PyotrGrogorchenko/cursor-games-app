@@ -21,7 +21,7 @@ export const InputStyled = styled.input<Props>((props) => `
   border: 0;
   border-bottom: 1px solid ${props.theme.palette.tertiary};
   transition: border-bottom ${transTime} ease-out;
-  :focus {
+  :focus, :hover {
     border-bottom: 1px solid ${props.theme.palette.common};
   }
 `)
@@ -39,7 +39,7 @@ export const Label = styled.label<Props>((props) => {
   
   ${InputStyled}:hover ~ & {
     transition: ${transTime};
-    color: ${props.theme.palette.primary};
+    color: ${props.theme.palette.common};
   } 
   ${InputStyled}:focus ~ & {
     transition: ${transTime};
@@ -59,7 +59,7 @@ export const FocusBorder = styled.span((props) => `
   ${InputStyled}:hover ~ & {
     height: 2px;
     transition: ${transTime};
-    background-color: ${props.theme.palette.primary};
+    background-color: ${props.theme.palette.common};
     width: 100%;
   } 
   ${InputStyled}:focus ~ & {

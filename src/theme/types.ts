@@ -1,4 +1,4 @@
-export type Color = 'primary' | 'secondary' | 'tertiary' | 'common' | 'error' | 'warning' | 'success' | 'shadow'
+export type Color = 'primary' | 'secondary' | 'tertiary' | 'common' | 'error' | 'warning' | 'success' | 'shadow' | 'dark' | 'light'
 export type Size = 's' | 'm' | 'l'
 export type SizeText = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 

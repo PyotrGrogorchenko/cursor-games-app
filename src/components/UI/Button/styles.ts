@@ -25,7 +25,7 @@ const getStyles = ((props: Props, theme: Theme) => {
     font-size: ${sizing.button[props.size || 'm']};
     border-radius: 5px; 
     border: ${isOutlined ? `2px solid ${colorPrimary}` : 'none'};
-    background-color: ${isContained ? `${colorPrimary}` : '#ffffff00'};
+    background-color: ${isContained ? `${colorPrimary}` : 'transparent'};
     color: ${isContained ? `${colorSecondary}` : `${colorPrimary}`};
     ${disabled ? 'pointer-events: none' : 'cursor: pointer'};
     transition-duration: 300ms;

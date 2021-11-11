@@ -11,7 +11,9 @@ import { LinearLoader } from '@components/loaders/LinearLoader'
 import { set } from '@saga/theme/actions'
 import { useDispatch } from 'react-redux'
 import { Props } from './types'
-import { Container, Cell } from './styles'
+import {
+  Container, Grid, Cell, Title
+} from './styles'
 
 const Layout: FC<Props> = (props: Props) => {
   const { children } = props
@@ -59,7 +61,8 @@ const Layout: FC<Props> = (props: Props) => {
 
   return (
     <>
-      <Container>
+      <Container/>
+      <Grid>
         <Cell justifyContent='flex-start'>
           <Button onClick={(e) => onBurger(e)} icon='burger'/>
         </Cell>
@@ -71,12 +74,12 @@ const Layout: FC<Props> = (props: Props) => {
           <Button onClick={onAdjust} icon='adjust'/>
         </Cell>
         <Cell>
-          {title}
+          <Title>{title}</Title>
         </Cell>
         <Cell justifyContent='flex-end'>
           <UserCell/>
         </Cell>
-      </Container>
+      </Grid>
       <LinearLoader/>
       {children}
     </>

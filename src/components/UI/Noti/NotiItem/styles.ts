@@ -41,3 +41,8 @@ export const Container = styled.div<ContainerProps>`
   animation: ${start} ${(props => String(props.animationDuration))}s linear 1 reverse ${(props => (props.deletedAt ? 'running' : 'paused'))},
     ${start} ${(props => String(props.animationDuration))}s linear 1 running;
 `
+
+export const Text = styled.span`
+  font-size: ${props => props.theme.sizing.text.h6};
+  color: ${props => props.theme.palette.primary};
+`

@@ -1,4 +1,4 @@
-import { Palette, Theme } from './types'
+import { Palette, Theme } from '../types'
 
 const palette: Palette = {
   primary: '#333333',
@@ -8,7 +8,9 @@ const palette: Palette = {
   shadow: '#e6e6e6',
   error: '#ed4b48',
   warning: '#ffb400',
-  success: '#26b47f'
+  success: '#26b47f',
+  dark: '#333333',
+  light: '#ffffff'
 }
 
 const text = {
