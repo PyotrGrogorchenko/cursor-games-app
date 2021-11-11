@@ -1,4 +1,4 @@
-<a href="https://cursor-games-app.herokuapp.com/"><img height="80" src="https://i.ibb.co/fnfMS6W/logo-git.png"></a>  
+<a href="https://cursor-games-app.herokuapp.com/"><img height="80" src="https://github.com/PyotrGrogorchenko/cursor-games-app/blob/main/static/logo/logo-big.svg"></a>  
 [![app](https://img.shields.io/badge/deploy-passing-green)](https://cursor-games-app.herokuapp.com/)
 [![api](https://img.shields.io/badge/api-passing-green)](https://github.com/PyotrGrogorchenko/cursor-games-api)
 [![fligma](https://img.shields.io/badge/fligma-v1-green)](https://www.figma.com/file/ZEJ6aAcKSzreORbW0HelZB/Cursor-games?node-id=0%3A1)
