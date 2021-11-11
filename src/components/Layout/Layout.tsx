@@ -1,25 +1,29 @@
 import React, {
   FC, useCallback
 } from 'react'
-import {
-  AppBar, Button, Container, Grid, IconButton, Typography, withStyles
-} from '@material-ui/core'
-import { withRouter } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { RoutesList } from '@components/routers/MainRouter'
-import { LinearLoader } from '@components/loaders/LinearLoader'
-import { userAuthSelector, userDataPropSelector } from '@store/selectors'
-import MenuIcon from '@material-ui/icons/Menu'
-import HomeIcon from '@material-ui/icons/Home'
-import { AvatarUI } from '@components/UI/AvatarUI/index'
+import { themeSelector, userAuthSelector, userDataPropSelector } from '@store/selectors'
+import { Avatar } from '@components/UI/Avatar/index'
 import { useMainContext } from '@components/providers/MainProvider'
-import GitHubIcon from '@material-ui/icons/GitHub'
+import { Button } from '@components/UI/Button'
+import { LinearLoader } from '@components/loaders/LinearLoader'
+import { set } from '@saga/theme/actions'
+import { useDispatch } from 'react-redux'
 import { Props } from './types'
-import { styles } from './styles'
+import {
+  Container, Grid, Cell, Title
+} from './styles'
 
 const Layout: FC<Props> = (props: Props) => {
-  const { children, history } = props
+  const { children } = props
+  const history = useHistory()
+  const dispatch = useDispatch()
+
   const userLogin = userDataPropSelector('login')
   const isAuth = userAuthSelector()
+  const theme = themeSelector()
+
   const { setMenuOpen, title } = useMainContext()
 
   const onRoute = useCallback((e: OnClick, route: RoutesList) => {
@@ -30,60 +34,55 @@ const Layout: FC<Props> = (props: Props) => {
   const onBurger = useCallback((e: OnClick) => {
     e.preventDefault()
     setMenuOpen(true)
-  }, [history])
+  }, [])
 
-  const UserCell = () => {
+  const onAdjust = useCallback((e: OnClick) => {
+    e.preventDefault()
+    dispatch(set(theme === 'light' ? 'dark' : 'light'))
+  }, [theme])
+
+  const UserCell = useCallback(() => {
     if (!isAuth) {
       return (
         <>
-          <Button color='inherit' size='small' onClick={(e) => onRoute(e, '/signin')}>Log in</Button>
-          <Button color='inherit' size='small' onClick={(e) => onRoute(e, '/signup')}>Sign up</Button>
+          <Button onClick={(e) => onRoute(e, '/signin')} icon='signin'/>
+          <Button onClick={(e) => onRoute(e, '/signup')} icon='userAdd'/>
         </>
       )
     }
 
     return (
       <>
-        <Button color='inherit' size='small' onClick={(e) => onRoute(e, '/profile')}>{userLogin}</Button>
-        <AvatarUI/>
+        <Button size='s' onClick={(e) => onRoute(e, '/profile')}>{userLogin}</Button>
+        <Avatar/>
       </>
     )
-  }
+  }, [isAuth])
 
   return (
     <>
-      <AppBar position='relative'>
-        <Container fixed maxWidth='xl'>
-          <Grid container spacing={3} alignItems='center'>
-            <Grid item sm={1}>
-              <IconButton color='inherit' onClick={(e) => onBurger(e)}>
-                <MenuIcon/>
-              </IconButton>
-            </Grid>
-            <Grid item sm={3}>
-              <IconButton color='inherit' onClick={(e) => onRoute(e, '/')}>
-                <HomeIcon/>
-              </IconButton>
-              <IconButton color='inherit' href='https://github.com/PyotrGrogorchenko/cursor-games-app' target='_blank'>
-                <GitHubIcon/>
-              </IconButton>
-            </Grid>
-            <Grid item sm={4}>
-              <Typography align='center' variant='h6'>
-                {title}
-              </Typography>
-            </Grid>
-            <Grid item sm={4}>
-              <Grid container spacing={3} alignItems='center' justify='flex-end'>
-                <UserCell/>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Container>
-      </AppBar>
+      <Container/>
+      <Grid>
+        <Cell justifyContent='flex-start'>
+          <Button onClick={(e) => onBurger(e)} icon='burger'/>
+        </Cell>
+        <Cell>
+          <Button onClick={(e) => onRoute(e, '/')} icon='home'/>
+        </Cell>
+        <Cell>
+          <Button href='https://github.com/PyotrGrogorchenko/cursor-games-app' icon='github'/>
+          <Button onClick={onAdjust} icon='adjust'/>
+        </Cell>
+        <Cell>
+          <Title>{title}</Title>
+        </Cell>
+        <Cell justifyContent='flex-end'>
+          <UserCell/>
+        </Cell>
+      </Grid>
       <LinearLoader/>
       {children}
     </>
   )
 }
-export const LayoutTSX = withStyles(styles)(withRouter(Layout))
+export const LayoutTSX = Layout

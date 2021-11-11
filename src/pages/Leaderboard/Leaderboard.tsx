@@ -1,11 +1,8 @@
 import React, { FC, useEffect } from 'react'
-import { withStyles, Typography } from '@material-ui/core'
 import { useMainContext } from '@components/providers/MainProvider'
-import { styles } from './styles'
-import { Props } from './types'
+import { Header, Container } from './styles'
 
-const Leaderboard: FC<Props> = (props: Props) => {
-  const { classes } = props
+const Leaderboard: FC = () => {
   const { setTitle } = useMainContext()
 
   useEffect(() => {
@@ -13,9 +10,9 @@ const Leaderboard: FC<Props> = (props: Props) => {
   }, [])
 
   return (
-    <div className={classes.root}>
-      <Typography variant='h3'>Leaderboard</Typography>
-    </div>
+    <Container>
+      <Header>Leaderboard</Header>
+    </Container>
   )
 }
-export const LeaderboardTSX = withStyles(styles)(Leaderboard)
+export const LeaderboardTSX = Leaderboard

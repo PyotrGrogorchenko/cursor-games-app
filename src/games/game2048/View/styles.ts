@@ -1,18 +1,15 @@
-import { getColor } from '@games/common/theme'
-import { createStyles } from '@material-ui/core'
+import { CanvasHTMLAttributes } from 'react'
+import styled from 'styled-components'
 
-export const styles = () => createStyles({
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    height: '80vh',
-    width: '100%'
-  },
-  canvas: {
-    border: '5px solid',
-    borderColor: getColor('primary')
+export const Container = styled.div(() => `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
+  width: 100%
+`)
 
-  }
-})
+export const Canvas = styled.canvas<CanvasHTMLAttributes<HTMLCanvasElement>>((props) => `
+  border: 5px solid ${props.theme.palette.dark}
+`)

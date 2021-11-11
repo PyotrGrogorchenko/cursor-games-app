@@ -1,21 +1,18 @@
 import React, {
   FC, useEffect, useMemo, useRef, useState
 } from 'react'
-import { Box, withStyles } from '@material-ui/core'
 import { cloneDeep } from 'lodash'
 import { isGame } from '@games/common/utils/conditions'
-import { styles } from './styles'
 import { initialState, Props } from './types'
+import { Container, Canvas } from './styles'
 import { edge, header } from '../const'
-import {
-  drawHeader, drawScreen
-} from './utils'
+import { drawHeader, drawScreen } from './utils'
 
 let ctx: Ctx
 
-const View: FC<Props> = (props: Props) => {
+const View: FC<Props> = (props) => {
   const [state, setState] = useState(cloneDeep(initialState))
-  const { classes, model } = props
+  const { model } = props
   const {
     height, width, condition, score, items, scoreBest
   } = model
@@ -43,18 +40,17 @@ const View: FC<Props> = (props: Props) => {
   }, [items])
 
   return (
-    <Box className={classes.root}>
-      <canvas
+    <Container>
+      <Canvas
         id='canvas'
-        className={classes.canvas}
         width={ctxWidth}
         height={ctxHeight}
         ref={refCanvas}
       >
         Your browser is not supported canvas
-      </canvas>
-    </Box>
+      </Canvas>
+    </Container>
   )
 }
 
-export const ViewTSX = withStyles(styles)(View)
+export const ViewTSX = View

@@ -1,26 +1,31 @@
-import { CssBaseline, ThemeProvider, createMuiTheme } from '@material-ui/core'
 import React, { useEffect } from 'react'
+import { ThemeProvider } from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { Layout } from '@components/Layout'
 import { MainRouter } from '@components/routers/MainRouter'
 import { user } from '@saga/auth/actions'
-import { NotiProvider } from '@components/providers/NotiProvider'
+import { NotiProvider } from '@components/UI/Noti/NotiProvider'
 import { NotiError } from '@components/UI/NotiError'
 import { HistoryListener } from '@components/routers/HistoryListener'
 import { BurgerMenu } from '@components/UI/BurgerMenu'
 import { MainProvider } from '@components/providers/MainProvider'
-
-const theme = createMuiTheme()
+import { GlobalStyle } from '@components/GlobalStyle'
+import { getTheme } from '@theme'
+import { themeSelector } from '@store/selectors'
 
 export const App = () => {
+  const theme = themeSelector()
+
   const dispatch = useDispatch()
-  useEffect(() => {dispatch(user())}, [])
+  useEffect(() => {
+    dispatch(user())
+  }, [])
 
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={getTheme(theme)}>
+        <GlobalStyle/>
         <NotiProvider>
-          <CssBaseline/>
           <MainProvider>
             <NotiError/>
             <HistoryListener/>

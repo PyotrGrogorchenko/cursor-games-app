@@ -1,24 +1,23 @@
 import React, { FC, useCallback, useEffect } from 'react'
-import {
-  Box, Button, withStyles
-} from '@material-ui/core'
-import { withRouter } from 'react-router-dom'
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
-import { FormField } from '@components/UI/FormField'
 import { DataSignin } from '@apiYa/auth/types'
 import { useDispatch } from 'react-redux'
 import { signin } from '@saga/auth/actions'
 import { conditionSuccessSelector } from '@store/selectors'
 import { useMainContext } from '@components/providers/MainProvider'
-import { styles } from './styles'
-import { Props } from './types'
+import { Button } from '@components/UI/Button'
+import { useHistory } from 'react-router-dom'
+import { FormField } from '@components/UI/FormField'
+import { Form, Content, Buttons } from './styles'
 
-const Signin: FC<Props> = (props: Props) => {
-  const { classes, history } = props
-  const formContext = useForm<DataSignin>()
+const Signin: FC = () => {
   const dispatch = useDispatch()
   const postSigninSuccess = conditionSuccessSelector('postSignin')
   const { setTitle } = useMainContext()
+  const history = useHistory()
+
+  const formContext = useForm<DataSignin>()
+  const { handleSubmit } = formContext
 
   useEffect(() => {
     setTitle('Signin')
@@ -26,29 +25,33 @@ const Signin: FC<Props> = (props: Props) => {
 
   useEffect(() => {
     if (postSigninSuccess) history.push('/')
-  }, [postSigninSuccess])
+  }, [postSigninSuccess, history])
 
   const onSubmit: SubmitHandler<DataSignin> = useCallback(data => {
     dispatch(signin(data))
   }, [])
 
-  const onClick = useCallback((e: OnClick) => {
+  const onSignup = useCallback((e: OnClick) => {
     e.preventDefault()
     history.push('/signup')
   }, [history])
 
   return (
-    <Box className={classes.root}>
+    <>
       <FormProvider {...formContext}>
-        <form className={classes.formControl} onSubmit={formContext.handleSubmit(onSubmit)}>
-          <FormField id='login' label='Login' type='login'/>
-          <FormField id='password' label='Password' type='password'/>
-          <Button variant='contained' color='primary' type='submit'>Sign in</Button>
-          <Button color='default' onClick={onClick}>Sign up</Button>
-        </form>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <Content>
+            <FormField id='login' label='Login' type='login'/>
+            <FormField id='password' label='Password' type='password'/>
+          </Content>
+          <Buttons>
+            <Button variant='contained' type='submit'>Sign in</Button>
+            <Button onClick={onSignup}>Sign up</Button>
+          </Buttons>
+        </Form>
       </FormProvider>
-    </Box>
+    </>
   )
 }
 
-export const SigninTSX = withStyles(styles)(withRouter(Signin))
+export const SigninTSX = Signin

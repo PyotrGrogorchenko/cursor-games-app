@@ -42,7 +42,9 @@
       "@validation/*": ["src/services/validation/*"],
       "@games/*": ["src/games/*"],
       "@env/*": ["env/*"],
-      "@HOCs": ["src/HOCs/index"]
+      "@HOCs": ["src/HOCs/index"],
+      "@theme": ["src/theme/index"],
+      "@utils": ["src/utils/index"]
     }       
   },
   "include": [

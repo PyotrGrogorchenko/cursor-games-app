@@ -36,3 +36,6 @@ export const conditionErrorSelector = (method?: any) => conditionPhaseSelector('
 // err
 export const errSelector = () => typedState(s => s).err
 export const errDataSelector = () => errSelector().data
+
+// theme
+export const themeSelector = () => typedState(s => s).theme.name

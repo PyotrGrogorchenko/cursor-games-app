@@ -1,18 +1,18 @@
 import React, { FC } from 'react'
-import { withStyles } from '@material-ui/core'
 import { conditionRequestSelector, loaderSelector } from '@store/selectors'
-import LinearProgress from '@material-ui/core/LinearProgress'
-import { Props } from './types'
-import { styles } from './styles'
+import { Wrapper, Slider } from './styles'
 
-const LinearLoader: FC<Props> = (props: Props) => {
-  const { classes } = props
+const LinearLoader: FC = () => {
   const isRequest = conditionRequestSelector()
   const isLoader = loaderSelector()
   return (
     <>
-      {(isRequest || isLoader) && <LinearProgress className={classes.root} color='secondary'/>}
+      {(isRequest || isLoader) && (
+        <Wrapper>
+          <Slider/>
+        </Wrapper>
+      )}
     </>
   )
 }
-export const LinearLoaderTSX = withStyles(styles)(LinearLoader)
+export const LinearLoaderTSX = LinearLoader

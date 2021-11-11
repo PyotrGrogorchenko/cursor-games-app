@@ -1,11 +1,9 @@
-import { createStyles } from '@material-ui/core/styles'
+import styled from 'styled-components'
 
-export const styles = () => createStyles({
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '80vh'
-  }
-})
+export const Container = styled.div(() => `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height 80vh;
+  width: 100%;
+ `)

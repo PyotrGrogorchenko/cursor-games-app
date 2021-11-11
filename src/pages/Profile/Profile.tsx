@@ -1,41 +1,36 @@
 import React, { FC, useCallback, useEffect } from 'react'
-import {
-  Box, Button, withStyles
-} from '@material-ui/core'
-import { withRouter } from 'react-router-dom'
+import { Button } from '@components/UI/Button'
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
 import { FormField } from '@components/UI/FormField'
 import { UserData } from '@apiYa/user/types'
-import { AvatarUI } from '@components/UI/AvatarUI'
+import { Avatar } from '@components/UI/Avatar'
 import { userDataSelector, conditionSuccessSelector, conditionSelector } from '@store/selectors'
 import { logout } from '@saga/auth/actions'
 import { profile } from '@saga/user/actions'
-import { useSnackbar } from 'notistack'
 import { useDispatch } from 'react-redux'
-import SaveIcon from '@material-ui/icons/Save'
-import MeetingRoomIcon from '@material-ui/icons/MeetingRoom'
-import { ChangePasswordForm } from '@components/forms/ChangePasswordForm'
 import { useMainContext } from '@components/providers/MainProvider'
-import { styles } from './styles'
-import { Props } from './types'
+// import { ChangePasswordForm } from '@components/forms/ChangePasswordForm'
+import { useHistory } from 'react-router'
+import { useNoti } from '@components/UI/Noti/NotiProvider'
+import { Form, Content, Actions } from './styles'
 
-const Profile: FC<Props> = (props: Props) => {
-  const { classes, history } = props
+const Profile: FC = () => {
   const userData = userDataSelector()
   const formContext = useForm<UserData>()
   const dispatch = useDispatch()
   const putProfileSuccess = conditionSuccessSelector('putProfile')
   const putLogoutSuccess = conditionSuccessSelector('postLogout')
   const condition = conditionSelector()
-  const { enqueueSnackbar } = useSnackbar()
   const { setTitle } = useMainContext()
+  const history = useHistory()
+  const { pushNoti } = useNoti()
 
   useEffect(() => {
     setTitle('Profile')
   }, [])
 
   useEffect(() => {
-    if (putProfileSuccess) enqueueSnackbar('Profile saved', { variant: 'success' })
+    if (putProfileSuccess) {pushNoti('Profile saved', 'info')}
   }, [putProfileSuccess])
 
   useEffect(() => {
@@ -52,27 +47,31 @@ const Profile: FC<Props> = (props: Props) => {
   }, [])
 
   return (
-    <Box className={classes.root}>
+    <>
       <FormProvider {...formContext}>
         {userData && (
           <>
-            <AvatarUI showBtn size='large'/>
-            <form className={classes.formControl} onSubmit={formContext.handleSubmit(onSubmit)}>
-              <FormField id='first_name' label='First name' type='name' value={userData.first_name}/>
-              <FormField id='second_name' label='Second name' type='name' value={userData.second_name}/>
-              <FormField id='display_name' label='Display name' type='name' value={userData.display_name}/>
-              <FormField id='login' label='Login' type='login' value={userData.login}/>
-              <FormField id='email' label='Email' type='email' value={userData.email}/>
-              <FormField id='phone' label='Phone' type='phone' value={userData.phone}/>
-              <Button variant='contained' color='primary' type='submit' startIcon={<SaveIcon/>}>Save</Button>
-            </form>
-            <ChangePasswordForm/>
-            <Button variant='outlined' color='secondary' size='small' onClick={onLogout} startIcon={<MeetingRoomIcon/>}>Log out</Button>
+            <Avatar showBtn size='l'/>
+            <Form onSubmit={formContext.handleSubmit(onSubmit)}>
+              <Content>
+                <FormField id='first_name' label='First name' type='name' value={userData.first_name}/>
+                <FormField id='second_name' label='Second name' type='name' value={userData.second_name}/>
+                <FormField id='display_name' label='Display name' type='name' value={userData.display_name}/>
+                <FormField id='login' label='Login' type='login' value={userData.login}/>
+                <FormField id='email' label='Email' type='email' value={userData.email}/>
+                <FormField id='phone' label='Phone' type='phone' value={userData.phone}/>
+              </Content>
+              <Actions>
+                <Button variant='contained' color='success' type='submit'>Save</Button>
+                {/* <ChangePasswordForm/> */}
+                <Button variant='outlined' color='error' onClick={onLogout}>Log out</Button>
+              </Actions>
+            </Form>
           </>
         )}
       </FormProvider>
-    </Box>
+    </>
   )
 }
 
-export const ProfileTSX = withStyles(styles)(withRouter(Profile))
+export const ProfileTSX = Profile
