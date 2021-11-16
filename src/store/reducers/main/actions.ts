@@ -10,7 +10,7 @@ export enum Actions {
 export type ActionCondition = {
   payload?: Condition
 } & Action
-export const condition = (phase?: ConditionPhases, method?: any): ActionCondition => (
+export const condition = (phase?: ConditionPhases, method?: unknown): ActionCondition => (
   {
     type: Actions.CONDITION,
     payload: { phase, method }

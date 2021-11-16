@@ -9,7 +9,7 @@ export const clearTick = () => {
   tickId = undefined
 }
 
-export const setTick = (cb: Func, interval: number, ...args: any[]) => {
+export const setTick = (cb: Func, interval: number, ...args: unknown[]) => {
   clearTick()
   // @ts-ignore
   tickId = setInterval(() => cb(...args), interval)
@@ -21,7 +21,7 @@ export const clearPause = () => {
   tickId = undefined
 }
 
-export const setPause = (cb: Func, interval: number, ...args: any[]) => {
+export const setPause = (cb: Func, interval: number, ...args: unknown[]) => {
   clearPause()
   // @ts-ignore
   pauseId = setTimeout(() => {

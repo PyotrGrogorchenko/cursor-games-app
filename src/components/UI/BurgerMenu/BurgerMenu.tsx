@@ -16,7 +16,7 @@ const BurgerMenu = () => {
     setMenuOpen(false)
   }, [setMenuOpen])
 
-  const onClick = useCallback((e: any, route: RoutesList) => {
+  const onClick = useCallback((e: OnClick, route: RoutesList) => {
     e.preventDefault()
     setMenuOpen(false)
     history.push(route)

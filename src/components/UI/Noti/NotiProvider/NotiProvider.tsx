@@ -7,9 +7,8 @@ import { Props, Context } from './types'
 import { Container } from './styles'
 import { getColors } from './utils'
 
-// @ts-ignore
-const NotiContext = createContext<Context>({})
-export const useNoti = (): Context => useContext(NotiContext)
+const NotiContext = createContext<Partial<Context>>({})
+export const useNoti = (): Context => useContext(NotiContext) as Context
 
 function getIdFunc() {
   let id = 1

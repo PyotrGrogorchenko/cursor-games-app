@@ -1,4 +1,4 @@
-import { Palette, Theme } from 'src/theme'
+import { Palette, Theme } from '@theme'
 import styled from 'styled-components'
 import { Props } from './types'
 

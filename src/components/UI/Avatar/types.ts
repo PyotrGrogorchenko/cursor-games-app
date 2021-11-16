@@ -1,6 +1,6 @@
-import { Size } from 'src/theme'
+import { Sizes } from '@theme'
 
 export type Props = {
   showBtn?: boolean,
-  size?: Size
+  size?: Sizes
 }

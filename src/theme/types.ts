@@ -1,38 +1,28 @@
-export type Color = 'primary' | 'secondary' | 'tertiary' | 'common' | 'error' | 'warning' | 'success' | 'shadow' | 'dark' | 'light'
-export type Size = 's' | 'm' | 'l'
-export type SizeText = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+export type ColorsList = 'primary' | 'secondary' | 'tertiary' | 'common' | 'shadow' | 'error' | 'warning' | 'success' | 'dark' | 'light'
+export type ColorsReadonly = Exclude<ColorsList, 'primary' | 'secondary' | 'tertiary' | 'shadow'>
+export type ColorsOpen = Exclude<ColorsList, ColorsReadonly>
+export type Colors = ColorsOpen | ColorsReadonly
+export type Palette = Record<ColorsOpen, string> & Readonly<Record<ColorsReadonly, string>>
 
-export type Palette = {
-  [key in Color]: string
-}
+export type Sizes = 's' | 'm' | 'l'
+export type Sizing = Readonly<Record<Sizes, string>>
 
-export type Sizing = {
-  text: {
-    [key in SizeText]: string
-  },
-  button: {
-    [key in Size]: string
-  },
-  input: {
-    [key in Size]: string
-  }
-}
+export type TextSizes = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+export type TextSizing = Readonly<Record<TextSizes, string>>
 
-export type Breakpoints = {
-  mobileLandscape: string,
-  tabletPortrait: string,
-  tabletLandscape: string,
-  laptop: string,
-  desktop: string
-}
+export type BreakpointsSizes = 'mobileLandscape' | 'tabletPortrait' | 'tabletLandscape' | 'laptop' | 'desktop'
+export type BreakpointsSizing = Readonly<Record<BreakpointsSizes, string>>
 
-export type Mixins = {
-  fontFamily: string
-}
+export type MixinsList = 'fontFamily'
+export type Mixins = Record<MixinsList, string>
 
-export type Theme = {
+export type Theme = Readonly<{
   palette: Palette,
-  sizing: Sizing,
-  breakpoints: Breakpoints,
+  sizing: {
+    text: TextSizing,
+    button: Sizing,
+    input: Sizing
+  },
+  breakpoints: BreakpointsSizing,
   mixins: Mixins
-}
+}>

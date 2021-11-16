@@ -3,9 +3,8 @@ import React, {
 } from 'react'
 import { Props, Context } from './types'
 
-// @ts-ignore
-const MainContext = createContext<Context>({})
-export const useMainContext = (): Context => useContext(MainContext)
+const MainContext = createContext<Partial<Context>>({})
+export const useMainContext = (): Context => useContext(MainContext) as Context
 
 const MainProvider: FC<Props> = (props) => {
   const { children } = props

@@ -2,7 +2,7 @@ export type ConditionPhases = 'REQUEST' | 'SUCCESS' | 'ERROR'
 
 export type Condition = {
   phase?: ConditionPhases
-  method?: any
+  method?: unknown
 }
 
 export type State = {

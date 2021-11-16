@@ -1,4 +1,4 @@
 type LooseObject = {
-  [key: string]: any
+  [key: string]: unknown
 }
 type Ctx = CanvasRenderingContext2D

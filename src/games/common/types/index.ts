@@ -6,7 +6,7 @@ export type Vector2 = {
   y: number
 }
 
-export type Func = (...args: any[]) => void
+export type Func = (...args: unknown[]) => void
 
 export type BaseData = {
   gameId: string

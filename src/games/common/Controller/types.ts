@@ -1,9 +1,9 @@
 import { Keys } from '@games/common/types'
 
 export type ModelMethods = {
-  getModelData: () => any
+  getModelData: () => unknown
   onController: (key: Keys) => void
-  clear: () => any
+  clear: () => unknown
   updateScoreBest: (scoreBest: number) => void
 }
 

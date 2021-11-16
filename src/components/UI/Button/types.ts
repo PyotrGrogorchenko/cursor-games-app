@@ -1,12 +1,12 @@
 import { ButtonHTMLAttributes } from 'react'
 import { Icon } from '@components/UI/Icon/utils'
-import { Color, Size } from 'src/theme'
+import { Colors, Sizes } from '@theme'
 
 export type PropsCommon = {
   icon?: Icon,
-  size?: Size,
+  size?: Sizes,
   variant?: 'text' | 'contained' | 'outlined',
-  color?: Color,
+  color?: Colors,
   href?: string,
   disabled?: boolean
 }
