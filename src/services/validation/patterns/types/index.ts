@@ -5,6 +5,4 @@ export type Pattern = {
   tip: string
 }
 
-export type Patterns = {
-  [key in Types]: Pattern
-}
+export type Patterns = Record<Types, Pattern>

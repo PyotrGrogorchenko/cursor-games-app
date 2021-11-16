@@ -1,4 +1,2 @@
-type LooseObject = {
-  [key: string]: unknown
-}
+type LooseObject = Record<string, any>
 type Ctx = CanvasRenderingContext2D
